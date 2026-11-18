@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mulderx.local/schemas/finding.schema.json",
+  "title": "Mulderx structured finding receipt",
+  "type": "object",
+  "required": [
+    "target", "scope", "lead_id", "vulnerability_class", "affected_asset",
+    "actor", "resource", "operation", "hypothesis", "observations", "evidence",
+    "confidence", "impact", "reproduction_status", "severity_proposal",
+    "disproof_attempts", "status", "status_history", "next_action"
+  ],
+  "properties": {
+    "target": { "type": "string", "minLength": 1 },
+    "scope": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "lead_id": { "type": "string", "pattern": "^L[0-9]{1,6}$" },
+    "vulnerability_class": { "type": "string", "minLength": 1 },
+    "affected_asset": { "type": "string", "minLength": 1 },
+    "actor": { "type": "string", "minLength": 1 },
+    "resource": { "type": "string", "minLength": 1 },
+    "operation": { "type": "string", "minLength": 1 },
+    "hypothesis": { "type": "string", "minLength": 1 },
+    "observations": { "type": "array" },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path", "sha256", "description", "source"],
+        "properties": {
+          "kind": { "enum": ["baseline", "execution", "verification", "impact", "disproof", "judge", "source", "other"] },
+          "path": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "description": { "type": "string", "minLength": 1 },
+          "source": { "enum": ["tool_capture", "operator_capture"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "confidence": { "enum": ["low", "medium", "high"] },
+    "impact": {
+      "type": "object",
+      "required": ["demonstrated", "description"],
+      "properties": {
+        "demonstrated": { "type": "boolean" },
+        "description": { "type": "string" }
+      }
+    },
+    "reproduction_status": { "enum": ["NOT_TESTED", "PARTIAL", "REPRODUCED", "NOT_REPRODUCIBLE"] },
+    "severity_proposal": { "type": "string", "minLength": 1 },
+    "severity_gate": {
+      "type": "object",
+      "properties": {
+        "Q1": { "type": "string", "minLength": 1 },
+        "Q2": { "type": "string", "minLength": 1 },
+        "Q3": { "type": "string", "minLength": 1 }
+      }
+    },
+    "disproof_attempts": { "type": "array" },
+    "status": { "enum": ["CANDIDATE", "TESTING", "CONFIRMED", "REVIEWED", "APPROVED", "DISCARDED", "BLOCKED", "INSUFFICIENT"] },
+    "status_history": { "type": "array", "items": { "type": "object" } },
+    "status_reason": { "type": "string", "minLength": 1 },
+    "review": {
+      "type": "object",
+      "required": ["verdict", "summary", "reviewed_by", "at"],
+      "properties": {
+        "verdict": { "enum": ["APPROVED", "REJECTED", "INCOMPLETE"] },
+        "summary": { "type": "string", "minLength": 1 },
+        "reviewed_by": { "enum": ["mulderx", "operator"] },
+        "at": { "type": "string", "minLength": 1 }
+      }
+    },
+    "next_action": { "type": "string", "minLength": 1 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "enum": ["CONFIRMED", "REVIEWED", "APPROVED"] } } },
+      "then": {
+        "properties": {
+          "reproduction_status": { "const": "REPRODUCED" },
+          "impact": { "properties": { "demonstrated": { "const": true } } }
+        },
+        "required": ["severity_gate"]
+      }
+    },
+    {
+      "if": { "properties": { "status": { "enum": ["REVIEWED", "APPROVED"] } } },
+      "then": { "required": ["review"] }
+    },
+    {
+      "if": { "properties": { "status": { "enum": ["DISCARDED", "BLOCKED", "INSUFFICIENT"] } } },
+      "then": { "required": ["status_reason"] }
+    }
+  ],
+  "additionalProperties": true
+}

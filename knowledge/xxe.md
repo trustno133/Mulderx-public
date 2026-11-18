@@ -1,0 +1,70 @@
+# XXE -- Top 66 reportes H1
+
+_Generado el 2026-10-30 | Ordenado por bounty/upvotes_
+
+- [XXE on pulse.mail.ru](https://hackerone.com/reports/505947) -- Mail.ru | $6,000 | XML External Entities (XXE) | 264up
+- [Multiple endpoints are vulnerable to XML External Entity injection (XXE)](https://hackerone.com/reports/72272) -- Pornhub | $2,500 | Denial of Service | 138up
+- [Blind XXE via Powerpoint files](https://hackerone.com/reports/334488) -- Open-Xchange | $2,000 | XML External Entities (XXE) | 86up
+- [[Python]: CWE-611: XXE](https://hackerone.com/reports/1512937) -- GitHub Security Lab | $1,800 | 4up
+- [LFI and SSRF via XXE in emblem editor](https://hackerone.com/reports/347139) -- Rockstar Games | $1,500 | XML External Entities (XXE) | 79up
+- [blind XXE when uploading avatar in mymail phone app](https://hackerone.com/reports/277341) -- Mail.ru | $1,000 | XML External Entities (XXE) | 12up
+- [Blind XXE on my.mail.ru](https://hackerone.com/reports/276276) -- Mail.ru | $800 | XML External Entities (XXE) | 23up
+- [Blind OOB XXE At "http://ubermovement.com/"](https://hackerone.com/reports/154096) -- Uber | $500 | Command Injection - Generic | 56up
+- [Blind XXE on pu.vk.com](https://hackerone.com/reports/296622) -- VK.com | $500 | XML External Entities (XXE) | 18up
+- [OOB XXE](https://hackerone.com/reports/690387) -- Mail.ru | $500 | XML External Entities (XXE) | 12up
+- [OOB XXE](https://hackerone.com/reports/690295) -- Mail.ru | $500 | XML External Entities (XXE) | 5up
+- [XXE at ecjobs.starbucks.com.cn/retail/hxpublic_v6/hxdynamicpage6.aspx](https://hackerone.com/reports/500515) -- Starbucks | XML External Entities (XXE) | 319up
+- [XXE on sms-be-vip.twitter.com in SXMP Processor](https://hackerone.com/reports/248668) -- X / xAI | XML External Entities (XXE) | 258up
+- [XXE on https://duckduckgo.com](https://hackerone.com/reports/483774) -- DuckDuckGo | XML External Entities (XXE) | 218up
+- [Phone Call to XXE via Interactive Voice Response](https://hackerone.com/reports/395296) -- ██████ | 172up
+- [Partial bypass of #483774 with Blind XXE on https://duckduckgo.com](https://hackerone.com/reports/486732) -- DuckDuckGo | XML External Entities (XXE) | 159up
+- [DMARC  Not found for paragonie.com   URGENT](https://hackerone.com/reports/179828) -- Paragon Initiative Enterprises | XML External Entities (XXE) | 147up
+- [XXE through injection of a payload in the XMP metadata of a JPEG file](https://hackerone.com/reports/836877) -- Informatica | XML External Entities (XXE) | 138up
+- [XXE in Site Audit function exposing file and directory contents](https://hackerone.com/reports/312543) -- Semrush | XML External Entities (XXE) | 115up
+- [XXE Injection through SVG image upload leads to SSRF](https://hackerone.com/reports/897244) -- Zivver | XML External Entities (XXE) | 112up
+- [XXE in DoD website that may lead to RCE](https://hackerone.com/reports/227880) -- U.S. Dept Of Defense | XML External Entities (XXE) | 97up
+- [[RCE] Unserialize to XXE - file disclosure on ams.upload.pornhub.com](https://hackerone.com/reports/142562) -- Pornhub | Information Disclosure | 90up
+- [blind XXE in autodiscover parser](https://hackerone.com/reports/315837) -- Mail.ru | XML External Entities (XXE) | 70up
+- [XXE на webdav.mail.ru -  PROPFIND/PROPPATCH](https://hackerone.com/reports/758978) -- Mail.ru | XML External Entities (XXE) | 54up
+- [XXE on ██████████ by bypassing WAF ████](https://hackerone.com/reports/433996) -- QIWI | XML External Entities (XXE) | 53up
+- [RCE via Local File Read -> php unserialization-> XXE -> unpickling](https://hackerone.com/reports/415501) -- h1-5411-CTF | Code Injection | 46up
+- [[rev-app.informatica.com] - XXE](https://hackerone.com/reports/105434) -- Informatica | Uncontrolled Resource Consumption | 45up
+- [xmlrpc.php &wp-cron.php files are enabled, and will used for (DDOS),(DOS) and broutforce users attack.](https://hackerone.com/reports/2299069) -- Nextcloud | XML External Entities (XXE) | 41up
+- [Authenticated XXE](https://hackerone.com/reports/1095645) -- WordPress | XML External Entities (XXE) | 41up
+- [XML External Entity (XXE) in qiwi.com + waf bypass](https://hackerone.com/reports/99279) -- QIWI | 41up
+- [[HTA2] XXE on https://███ via SpellCheck Endpoint.](https://hackerone.com/reports/715949) -- U.S. Dept Of Defense | XML External Entities (XXE) | 37up
+- [XXE on DoD web server](https://hackerone.com/reports/188743) -- U.S. Dept Of Defense | XML External Entities (XXE) | 37up
+- [XML Parser Bug: XXE over which leads to RCE](https://hackerone.com/reports/55431) -- drchrono | Code Injection | 35up
+- [Reflected XSS and possible SSRF/XXE on https://events.hackerone.com/conferences/get_recording_slides_xml.xml?url=myserver/xss.xml](https://hackerone.com/reports/1028396) -- HackerOne | Cross-site Scripting (XSS) - Reflected | 32up
+- [Singapore - XXE at https://www.starbucks.com.sg/RestApi/soap11](https://hackerone.com/reports/762251) -- Starbucks | XML External Entities (XXE) | 32up
+- [Non-production Open Database In Combination With XXE Leads To SSRF](https://hackerone.com/reports/742808) -- Evernote | XML External Entities (XXE) | 25up
+- [[app.informaticaondemand.com] XXE](https://hackerone.com/reports/105753) -- Informatica | Uncontrolled Resource Consumption | 25up
+- [XXE in upload file feature](https://hackerone.com/reports/105787) -- Informatica | Uncontrolled Resource Consumption | 22up
+- [XML External Entity (XXE) Injection](https://hackerone.com/reports/2573567) -- U.S. Dept Of Defense | XML External Entities (XXE) | 21up
+- [AEM forms XXE Vulnerability](https://hackerone.com/reports/1321070) -- Adobe | XML External Entities (XXE) | 18up
+- [Uploaded XLF files result in External Entity Execution](https://hackerone.com/reports/232614) -- Weblate | XML External Entities (XXE) | 18up
+- [[send.qiwi.ru] Soap-based XXE vulnerability /soapserver/](https://hackerone.com/reports/36450) -- QIWI | Uncontrolled Resource Consumption | 18up
+- [HackerOne’s 100K CTF Writeup](https://hackerone.com/reports/1218708) -- h1-ctf | XML External Entities (XXE) | 17up
+- [CCC H1 June 2021 CTF Writeup](https://hackerone.com/reports/1217114) -- h1-ctf | XML External Entities (XXE) | 16up
+- [Flag WriteUp](https://hackerone.com/reports/415202) -- h1-5411-CTF | XML External Entities (XXE) | 15up
+- [XXE in the Connector Designer](https://hackerone.com/reports/112116) -- Bime | Information Disclosure | 15up
+- [SVG file upload leads to XML injection](https://hackerone.com/reports/845832) -- Lab45 | XML Injection | 14up
+- [[marketplace.informatica.com] - XXE](https://hackerone.com/reports/106797) -- Informatica | Command Injection - Generic | 14up
+- [XML Injection / External Service Interaction (HTTP/DNS) On https://█████████.mil](https://hackerone.com/reports/1150799) -- U.S. Dept Of Defense | XML Injection | 13up
+- [XXE issue](https://hackerone.com/reports/130661) -- Moneybird | Command Injection - Generic | 13up
+- [[marketplace.informatica.com] - XXE](https://hackerone.com/reports/106802) -- Informatica | Command Injection - Generic | 12up
+- [[rev-app.informatica.com] - XXE via SAML](https://hackerone.com/reports/106865) -- Informatica | Command Injection - Generic | 12up
+- [[usuppliers.uber.com] - Server Side Request Forgery via XXE OOB](https://hackerone.com/reports/448598) -- Uber | Server-Side Request Forgery (SSRF) | 11up
+- [XXE with RCE potential on the https://█████████ (CVE-2017-3548)](https://hackerone.com/reports/710654) -- U.S. Dept Of Defense | XML External Entities (XXE) | 9up
+- [XXE in Enterprise Search's App Search web crawler](https://hackerone.com/reports/1156748) -- Elastic | XML External Entities (XXE) | 9up
+- [XML Injection on https://www.█████████ (███ parameter)](https://hackerone.com/reports/997381) -- U.S. Dept Of Defense | XML Injection | 9up
+- [XML E██████ternal Entity (XXE) Injection in ███](https://hackerone.com/reports/2564265) -- U.S. Dept Of Defense | XML External Entities (XXE) | 8up
+- [h1-5411-CTF report: LFI / Deserialization / XXE vulnerability,](https://hackerone.com/reports/415233) -- h1-5411-CTF | Command Injection - Generic | 8up
+- [Remote Code Execution (RCE) vulnerability in a DoD website](https://hackerone.com/reports/232330) -- U.S. Dept Of Defense | XML External Entities (XXE) | 8up
+- [XXE on www.publish.engelvoelkers.com](https://hackerone.com/reports/914801) -- Engel & Völkers Technology GmbH | XML External Entities (XXE) | 7up
+- [XXE крит](https://hackerone.com/reports/449627) -- Mail.ru | XML External Entities (XXE) | 7up
+- [XXE at Informatica sub-domain](https://hackerone.com/reports/150520) -- Informatica | Command Injection - Generic | 7up
+- [[Java]: Add XXE sinks](https://hackerone.com/reports/1339787) -- GitHub Security Lab | 6up
+- [XXE and SSRF on webmaster.mail.ru](https://hackerone.com/reports/12583) -- Mail.ru | Command Injection - Generic | 4up
+- [XXE in OAuth2 Applications gallery profile App logo](https://hackerone.com/reports/104620) -- Coinbase | 3up
+- [XXE at host vpn.owncloud.com](https://hackerone.com/reports/105980) -- ownCloud | Command Injection - Generic | 2up

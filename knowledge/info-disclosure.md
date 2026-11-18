@@ -1,0 +1,104 @@
+# Info Disclosure -- Top 100 reportes H1
+
+_Generado el 2026-10-30 | Ordenado por bounty/upvotes_
+
+- [Token leak in security challenge flow allows retrieving victim's PayPal email and plain text password](https://hackerone.com/reports/739737) -- PayPal | $15,300 | Missing Authentication for Critical Function | 1409up
+- [Open prod Jenkins instance](https://hackerone.com/reports/231460) -- Snapchat | $15,000 | Information Disclosure | 436up
+- [file read on MCS servers via supplying a QCOW2 image with external backing file](https://hackerone.com/reports/1024899) -- Mail.ru | $15,000 | Information Disclosure | 222up
+- [Leaked JFrog Artifactory  username and password exposed on GitHub - https://snapchat.jfrog.io](https://hackerone.com/reports/911606) -- Snapchat | $15,000 | Information Disclosure | 137up
+- [An attacker can can view any hacker email via  /SaveCollaboratorsMutation operation name](https://hackerone.com/reports/2032716) -- HackerOne | $12,500 | Information Disclosure | 428up
+- [Internal attachments can be exported via "Export as .zip" feature](https://hackerone.com/reports/186230) -- HackerOne | $12,500 | Information Disclosure | 269up
+- [JSON serialization of any Project model results in all Runner tokens being exposed through Quick Actions](https://hackerone.com/reports/509924) -- GitLab | $12,000 | Information Disclosure | 366up
+- [Access to multiple production Grafana dashboards](https://hackerone.com/reports/663628) -- Snapchat | $10,000 | Information Disclosure | 464up
+- [gitlab-workhorse bypass in Gitlab::Middleware::Multipart allowing files in `allowed_paths` to be read](https://hackerone.com/reports/850447) -- GitLab | $10,000 | Information Disclosure | 410up
+- [Partial disclosure of report activity through new "Export as .zip" feature](https://hackerone.com/reports/182358) -- HackerOne | $10,000 | Information Disclosure | 355up
+- [Information Disclosure in /skills call](https://hackerone.com/reports/188719) -- HackerOne | $10,000 | Information Disclosure | 286up
+- [password reset token leaking allowed for ATO of an Uber account](https://hackerone.com/reports/173551) -- Uber | $10,000 | Improper Authentication - Generic | 100up
+- [AWS keys and user cookie leakage via uninitialized memory leak in outdated librsvg version in Basecamp](https://hackerone.com/reports/2107680) -- Basecamp | $8,868 | Information Disclosure | 248up
+- [Customer private program can disclose email any users through invited via username](https://hackerone.com/reports/807448) -- HackerOne | $7,500 | Information Disclosure | 589up
+- [Abuse cookie-modification, toast HTML and expired domain in CSP-form-action replacing login-page at www.dropbox.com/login to submit creds externally](https://hackerone.com/reports/1590794) -- Dropbox | $6,909 | Cleartext Transmission of Sensitive Information | 47up
+- [Employee's GitHub Token Found In Travis CI Build Logs](https://hackerone.com/reports/496937) -- Superhuman (formerly Grammarly) | $5,000 | Information Disclosure | 408up
+- [Access Grab_Road BigData Database via Open Presto coordinator](https://hackerone.com/reports/266766) -- Grab | $5,000 | Information Disclosure | 97up
+- [Определение id по номеру телефона](https://hackerone.com/reports/331040) -- VK.com | $5,000 | Information Disclosure | 60up
+- [Possible Sensitive Session Information Leak in Active Storage](https://hackerone.com/reports/3082917) -- Internet Bug Bounty | $4,323 | Information Disclosure | 82up
+- [CVE-2025-24813: Remote Code Execution and/or Information disclosure and/or malicious content added to uploaded files via write enabled Default Servlet](https://hackerone.com/reports/3031518) -- Internet Bug Bounty | $4,323 | Deserialization of Untrusted Data | 56up
+- [Reflected XSS and sensitive data exposure, including payment details, on lioncityrentals.com.sg](https://hackerone.com/reports/340431) -- Uber | $4,000 | Cleartext Transmission of Sensitive Information | 376up
+- [SSRF via Office file thumbnails](https://hackerone.com/reports/671935) -- Slack | $4,000 | Information Disclosure | 107up
+- [Information Leakage via Clicked Link in GitHub Repository (Fingerprinting)](https://hackerone.com/reports/2505761) -- GitHub | $4,000 | Information Disclosure | 72up
+- [information disclosure of secret_key_base via encoding charcters](https://hackerone.com/reports/460545) -- GitLab | $3,500 | Information Exposure Through an Error Message | 146up
+- [Leaking API_KEY of testrail of HelloSign gives read/write access](https://hackerone.com/reports/761791) -- Dropbox | $3,375 | Information Disclosure | 13up
+- [Discrepancy in hacker profile report count may reveal existence of a private program by publishing a report](https://hackerone.com/reports/410015) -- HackerOne | $3,000 | Information Disclosure | 147up
+- [Linux TBB SFTP URI allows local IP disclosure](https://hackerone.com/reports/253429) -- Tor | $3,000 | Information Disclosure | 71up
+- [Lack of rate limiting on get.uber.com leads to enumeration of promotion codes and estimation of a lower bound on the number of Uber drivers](https://hackerone.com/reports/125200) -- Uber | $3,000 | Information Disclosure | 13up
+- [User credentials leak and arbitrary local file read/leak due to same-origin-policy violation](https://hackerone.com/reports/136454) -- Internet Bug Bounty | $3,000 | Information Disclosure | 3up
+- [[Information Disclosure] Amazon S3 Bucket of Shopify Ping (iOS) have public access of other users image](https://hackerone.com/reports/1021906) -- Shopify | $2,900 | Information Disclosure | 135up
+- [CVE-2024-3416: MTU of 4096 or greater without fragmentation may cause NGINX worker processes to leak previously freed memory](https://hackerone.com/reports/2599391) -- Internet Bug Bounty | $2,600 | Information Disclosure | 16up
+- [Team object in GraphQL disclosed private_comment](https://hackerone.com/reports/978143) -- HackerOne | $2,500 | Information Disclosure | 146up
+- [Unauthorized user can obtain `report_sources` attribute through Team GraphQL object](https://hackerone.com/reports/770209) -- HackerOne | $2,500 | Information Disclosure | 142up
+- [Private program disclosure via `vpn_suspended` GraphQL query](https://hackerone.com/reports/715192) -- HackerOne | $2,500 | Information Disclosure | 138up
+- [GraphQL field on Team node can be used to determine if External Program runs invite-only program](https://hackerone.com/reports/877642) -- HackerOne | $2,500 | Information Disclosure | 107up
+- [Team object in GraphQL disclosed total number of whitelisted hackers](https://hackerone.com/reports/342978) -- HackerOne | $2,500 | Information Disclosure | 93up
+- [Team object in GraphQL discloses team group names and permissions](https://hackerone.com/reports/343464) -- HackerOne | $2,500 | Information Disclosure | 75up
+- [Private draft report exposure in a program a user is added as a viewer to](https://hackerone.com/reports/2552205) -- HackerOne | $2,500 | Information Disclosure | 65up
+- [Disclose customer orders details by shopify chat application.](https://hackerone.com/reports/968165) -- Shopify | $2,500 | Information Disclosure | 65up
+- [Partial report contents leakage - via HTTP/2 concurrent stream handling](https://hackerone.com/reports/493176) -- HackerOne | $2,500 | Information Disclosure | 64up
+- [Program metrics disclosed response_efficiency_percentage via /program_name json response despite the team decided not to show on their profile](https://hackerone.com/reports/347693) -- HackerOne | $2,500 | Information Disclosure | 64up
+- [Private program policy page still accessible after user left the program](https://hackerone.com/reports/386997) -- HackerOne | $2,500 | Information Disclosure | 57up
+- [POST following PUT confusion](https://hackerone.com/reports/1752146) -- Internet Bug Bounty | $2,400 | Information Disclosure | 14up
+- [Authenticated but unauthorized users may enumerate Application names via the API](https://hackerone.com/reports/1916583) -- Internet Bug Bounty | $2,400 | Information Exposure Through an Error Message | 11up
+- [A HackerOne employee's GitHub personal access token exposed in Travis CI build logs](https://hackerone.com/reports/215625) -- HackerOne | $2,000 | Information Exposure Through an Error Message | 75up
+- [The request tells the number of private programs, the new system of authorization /invite/token](https://hackerone.com/reports/310946) -- HackerOne | $2,000 | Information Disclosure | 71up
+- [Internet-based attacker can run Flash apps in local sandboxes by using  special URL schemes (PSIRT-3299, CVE-2015-3079)](https://hackerone.com/reports/73276) -- Internet Bug Bounty | $2,000 | Information Disclosure | 11up
+- [Authentication bypass leads to sensitive data exposure (token+secret)](https://hackerone.com/reports/129918) -- Slack | $2,000 | Improper Authentication - Generic | 10up
+- [Flash Player information disclosure (etc.) CVE-2015-3044, PSIRT-3298](https://hackerone.com/reports/63324) -- Internet Bug Bounty | $2,000 | Information Disclosure | 8up
+- [Security bypass could lead to information disclosure](https://hackerone.com/reports/7803) -- Internet Bug Bounty | $2,000 | 3up
+- [[h1-2102] shopApps query from the graphql at /users/api returns all existing created apps, including private ones](https://hackerone.com/reports/1085332) -- Shopify | $1,900 | Information Disclosure | 34up
+- [Exfiltrate GDrive access token using CSRF](https://hackerone.com/reports/1468010) -- Dropbox | $1,728 | Information Disclosure | 32up
+- [AWS bucket leading to iOS test build code and configuration exposure](https://hackerone.com/reports/404822) -- Slack | $1,500 | Information Disclosure | 321up
+- [Information disclosure with sensitive data](https://hackerone.com/reports/703600) -- Mail.ru | $1,500 | Information Disclosure | 156up
+- [Accessible Druid Monitor console on https://api.pay-staging.razer.com/](https://hackerone.com/reports/702784) -- Razer | $1,500 | Information Disclosure | 126up
+- [Cross-Domain Leakage of X Username / UserID due to  Dynamically Generated JS File](https://hackerone.com/reports/2244229) -- X / xAI | $1,500 | Information Disclosure | 115up
+- [ubernycmarketplace.com is vulnerable to the Heartbleed Bug](https://hackerone.com/reports/304190) -- Uber | $1,500 | Information Disclosure | 112up
+- [Reading redacted data via hackbot's answers](https://hackerone.com/reports/247628) -- HackerOne | $1,500 | Information Disclosure | 93up
+- [Support Portal Takeover via Leaked API KEY](https://hackerone.com/reports/1766228) -- AMBER AI | $1,500 | Improper Access Control - Generic | 90up
+- [Shopify GitHub Login and Password exposed all private source code might be available.](https://hackerone.com/reports/124100) -- Shopify | $1,500 | Information Disclosure | 66up
+- [Открытый Confluence и доступы к чату операторов в Skype](https://hackerone.com/reports/957035) -- Mail.ru | $1,500 | Information Disclosure | 39up
+- [Ability to see password protected content by bypassing the password page of shopify preview URL for new development stores (as of August 17, 2020)](https://hackerone.com/reports/961929) -- Shopify | $1,500 | Information Disclosure | 32up
+- [H1514 Get access to non public information by pivoting with graphql queries](https://hackerone.com/reports/423388) -- Shopify | $1,500 | Information Disclosure | 14up
+- [[ssrf] libav vulnerable during conversion of uploaded videos](https://hackerone.com/reports/111269) -- Pornhub | $1,500 | Information Disclosure | 10up
+- [OrderListInitial leaks order details](https://hackerone.com/reports/882412) -- Shopify | $1,500 | Information Disclosure | 2up
+- [[sms-be-vip.twitter.com] vulnerable to Jetleak](https://hackerone.com/reports/143935) -- X / xAI | $1,260 | Information Disclosure | 28up
+- [Exposed Git Repo at http://fileserver.dropboxbusiness.com](https://hackerone.com/reports/317119) -- Dropbox | $1,024 | Information Disclosure | 63up
+- [Through blocking the redirect in /* the attacker able to bypass Authentication To see Sensitive Data sush as Game Keys , Emails ,..](https://hackerone.com/reports/736273) -- Razer | $1,000 | Improper Access Control - Generic | 196up
+- [HTML Injection in Swing can disclose netNTLM hash or cause DoS](https://hackerone.com/reports/1054382) -- PortSwigger Web Security | $1,000 | Information Disclosure | 117up
+- [Private key "tron" leaked via Travis CI Log](https://hackerone.com/reports/472651) -- Tron Foundation | $1,000 | Information Disclosure | 86up
+- [local file disclosure via FFmpeg hls processing](https://hackerone.com/reports/226756) -- VK.com | $1,000 | Information Disclosure | 77up
+- [Jira Credential Disclosure within Mozilla Slack](https://hackerone.com/reports/2467999) -- Mozilla | $1,000 | Information Disclosure | 65up
+- [Bypass of image rewriting / tracking blocker via srcset](https://hackerone.com/reports/1021885) -- Basecamp | $1,000 | Information Disclosure | 56up
+- [Improper access control on easytopup.in.th transaction page leads to user's information disclosure and may lead to account hijacking](https://hackerone.com/reports/776877) -- Razer | $1,000 | Improper Access Control - Generic | 41up
+- [User sensitive information disclosure](https://hackerone.com/reports/975047) -- Shopify | $1,000 | Privacy Violation | 40up
+- [View Any Program's Team Members through GET https://hackerone.com/invitations/](https://hackerone.com/reports/283014) -- HackerOne | $1,000 | Information Disclosure | 32up
+- [H1514 Deanonymizing Exchange Marketplace private listings](https://hackerone.com/reports/421009) -- Shopify | $1,000 | Information Disclosure | 30up
+- [Internal Employee informations Disclosure via TikTok Athena api](https://hackerone.com/reports/1575560) -- TikTok | $1,000 | Information Disclosure | 27up
+- [Leak of all project names and all user names , even across applications](https://hackerone.com/reports/152696) -- Harvest | $1,000 | Information Disclosure | 16up
+- [Gain access to random information via group chat "about" property](https://hackerone.com/reports/254285) -- Mail.ru | $1,000 | Information Disclosure | 15up
+- [Source code and internal credentials disclosure](https://hackerone.com/reports/898522) -- Mail.ru | $1,000 | Information Disclosure | 12up
+- [Mapbox Android SDK uses Broadcast Receiver instead of Local Broadcast Manager](https://hackerone.com/reports/192886) -- Mapbox | $1,000 | Information Disclosure | 11up
+- [[com.icq.mobile.client] Любое стороннее приложение может угнать сессию, а также другие файлы приложения](https://hackerone.com/reports/1029457) -- Mail.ru | $1,000 | Information Disclosure | 10up
+- [STAFF "No-Permissions" on the Store can retrieve the details Order via exchangeReceiptSend](https://hackerone.com/reports/917875) -- Shopify | $1,000 | Information Disclosure | 6up
+- [API Key added for one Indices works for all other indices too.](https://hackerone.com/reports/118925) -- Algolia | $1,000 | Improper Authentication - Generic | 6up
+- [CSV Injection in business.uber.com](https://hackerone.com/reports/126109) -- Uber | $1,000 | Information Disclosure | 6up
+- [https://217.69.135.63/rb/: money.mail.ru sources disclosure](https://hackerone.com/reports/13482) -- Mail.ru | $1,000 | Information Disclosure | 1up
+- [IDOR - Downloading all attachements if having access to a shared link](https://hackerone.com/reports/194790) -- Open-Xchange | $888 | Information Disclosure | 26up
+- [IDOR - Accessing other user's attachements via PUT /appsuite/api/files?action=saveAs](https://hackerone.com/reports/204984) -- Open-Xchange | $888 | Information Disclosure | 20up
+- [H1514 [beerify.shopifycloud.com] GraphQL discloses internal beer consumption](https://hackerone.com/reports/419883) -- Shopify | $802 | Information Disclosure | 57up
+- [Information Disclosure through Sentry Instance ███████](https://hackerone.com/reports/697512) -- Eternal | $750 | Information Exposure Through Debug Information | 178up
+- [View storyboard of private video @ ht.pornhub.com](https://hackerone.com/reports/138703) -- Pornhub | $750 | Information Disclosure | 130up
+- [Possible to steal any protected files on Android](https://hackerone.com/reports/377107) -- ownCloud | $750 | Information Disclosure | 115up
+- [[Zomato Order] Insecure deeplink leads to sensitive information disclosure](https://hackerone.com/reports/532225) -- Eternal | $750 | 113up
+- [Password and mail address stored unencrypted in memory - Rockstar Game Launcher](https://hackerone.com/reports/1128357) -- Rockstar Games | $750 | Missing Encryption of Sensitive Data | 90up
+- [Insecure Storage and Overly Permissive  API Keys in Android App](https://hackerone.com/reports/753868) -- Zenly | $750 | Cleartext Storage of Sensitive Information | 52up
+- [Google  Maps API key stored as plain text leading to DOS and financial damage](https://hackerone.com/reports/1093667) -- Zenly | $750 | Cleartext Storage of Sensitive Information | 51up
+- [Smuggle SocialClub's Facebook OAuth Code via Referer Leakage](https://hackerone.com/reports/342709) -- Rockstar Games | $750 | Information Disclosure | 39up
+- [API on campus-vtc.com allows access to ~100 Uber users full names, email addresses and telephone numbers.](https://hackerone.com/reports/580268) -- Uber | $750 | Information Disclosure | 35up
+- [uninitilized server memory disclosure via ImageMagick in my.mail.ru and cloud.mail.ru](https://hackerone.com/reports/251732) -- Mail.ru | $750 | Information Disclosure | 25up

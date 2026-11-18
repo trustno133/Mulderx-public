@@ -1,0 +1,200 @@
+
+</script>
+
+<script>
+(function(){
+  "use strict";
+  var DATA = JSON.parse(document.getElementById('data').textContent || '[]');
+
+  // ---- derive per-host tech tags + status bucket ----
+  function techsOf(d){
+    var t = [];
+    (d.tags||[]).forEach(function(x){ if(x) t.push(x); });
+    if(d.framework && t.indexOf(d.framework)<0) t.push(d.framework);
+    if((d.server||'').toLowerCase()==='envoy' && t.indexOf('Envoy')<0) t.unshift('Envoy');
+    // normalize dupes/casing
+    var seen={}, out=[];
+    t.forEach(function(x){ var k=x.toLowerCase(); if(!seen[k]){seen[k]=1; out.push(x);} });
+    return out;
+  }
+  function bucket(s){
+    if(s==='live'||s==='live·404') return 'live';
+    if(s==='gated') return 'gated';
+    if(s==='redirect') return 'redirect';
+    if(s==='dangling') return 'dangling';
+    if(s==='dead/internal') return 'dead';
+    return 'error';
+  }
+  var BUCKET_LABEL={live:'Vivo',gated:'Gated (401/403)',redirect:'Redirect',dead:'Muerto/interno',error:'Error 5xx',dangling:'Dangling'};
+  DATA.forEach(function(d){ d._techs=techsOf(d); d._b=bucket(d.status); d._hasLead=!!d.lead; });
+
+  // ---- state ----
+  var F = { area:new Set(), tech:new Set(), status:new Set(), asn:new Set() };
+  var onlyLead=false, q='', groupby='area', collapsed=new Set(), selHost=null;
+
+  var $=function(s){return document.querySelector(s);};
+  function matchExcept(exclude){
+    return DATA.filter(function(d){
+      if(q && d.host.indexOf(q)<0) return false;
+      if(onlyLead && !d._hasLead) return false;
+      if(exclude!=='area' && F.area.size && !F.area.has(d.area)) return false;
+      if(exclude!=='status' && F.status.size && !F.status.has(d._b)) return false;
+      if(exclude!=='tech' && F.tech.size){
+        var ok=false; d._techs.forEach(function(t){ if(F.tech.has(t)) ok=true; }); if(!ok) return false;
+      }
+      if(exclude!=='asn' && F.asn.size && !F.asn.has(d.asn_org||'(sin ASN)')) return false;
+      return true;
+    });
+  }
+  function current(){ return matchExcept(null); }
+
+  function countBy(list, keyfn){
+    var m={}; list.forEach(function(d){ var ks=keyfn(d); (Array.isArray(ks)?ks:[ks]).forEach(function(k){ if(k) m[k]=(m[k]||0)+1; }); }); return m;
+  }
+  function sortEntries(m){ return Object.keys(m).map(function(k){return [k,m[k]];}).sort(function(a,b){return b[1]-a[1]||a[0].localeCompare(b[0]);}); }
+
+  // ---- render tiles ----
+  function renderTiles(){
+    var all=DATA.length;
+    var byB=countBy(DATA,function(d){return d._b;});
+    var leads=DATA.filter(function(d){return d._hasLead;}).length;
+    var tiles=[
+      {k:'all', n:all, l:'Hosts', cls:''},
+      {k:'live', n:byB.live||0, l:'Vivos', cls:'on-live'},
+      {k:'gated', n:byB.gated||0, l:'Gated', cls:'on-gate'},
+      {k:'redirect', n:byB.redirect||0, l:'Redirect', cls:''},
+      {k:'dead', n:byB.dead||0, l:'Muertos', cls:''},
+      {k:'lead', n:leads, l:'Con lead', cls:'on-lead'}
+    ];
+    $('#tiles').innerHTML = tiles.map(function(t){
+      var pressed = t.k==='all' ? (!F.status.size&&!onlyLead) : t.k==='lead' ? onlyLead : F.status.has(t.k);
+      return '<button class="tile '+t.cls+'" data-k="'+t.k+'" aria-pressed="'+pressed+'"><div class="n">'+t.n+'</div><div class="l">'+t.l+'</div></button>';
+    }).join('');
+  }
+
+  var DOT={live:'var(--accent)',gated:'var(--gate)',redirect:'var(--lo)',dead:'var(--dead)',error:'var(--hi)',dangling:'var(--third)'};
+  // ---- render facets ----
+  function facetBlock(title, entries, set, kind, dots){
+    var items=entries.map(function(e){
+      var on=set.has(e[0]);
+      var dot = dots ? '<span class="fdot" style="background:'+(DOT[e[0]]||'var(--mute)')+'"></span>' : '';
+      return '<button class="fitem" data-kind="'+kind+'" data-v="'+encodeURIComponent(e[0])+'" aria-pressed="'+on+'">'+
+        '<span style="display:flex;align-items:center;gap:7px;min-width:0"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+dot+labelOf(kind,e[0])+'</span></span>'+
+        '<span class="fc">'+e[1]+'</span></button>';
+    }).join('');
+    return '<div class="facet"><h3>'+title+'</h3>'+items+'</div>';
+  }
+  function labelOf(kind,v){ return kind==='status'?(BUCKET_LABEL[v]||v):v; }
+  function renderFacets(){
+    var areas=sortEntries(countBy(matchExcept('area'),function(d){return d.area;}));
+    var techs=sortEntries(countBy(matchExcept('tech'),function(d){return d._techs;}));
+    var stats=sortEntries(countBy(matchExcept('status'),function(d){return d._b;}));
+    var asns=sortEntries(countBy(matchExcept('asn'),function(d){return d.asn_org||'(sin ASN)';}));
+    $('#facets').innerHTML =
+      facetBlock('Área', areas, F.area, 'area', false)+
+      facetBlock('Tecnología', techs, F.tech, 'tech', false)+
+      facetBlock('Hosting · ASN', asns, F.asn, 'asn', false)+
+      facetBlock('Estado', stats, F.status, 'status', true);
+  }
+
+  // ---- render list ----
+  function pill(b){ return '<span class="pill p-'+b+'">'+BUCKET_LABEL[b].split(' ')[0]+'</span>'; }
+  function rowHTML(d){
+    var tags=d._techs.slice(0,4).map(function(t){return '<span class="tg">'+t+'</span>';}).join('');
+    var lead=d.lead?'<span class="leadbadge">'+d.lead+'</span>':'';
+    return '<div class="row'+(d.host===selHost?' sel':'')+'" data-host="'+d.host+'">'+
+      '<div><div class="host">'+d.host+'</div><div class="tags">'+tags+'</div></div>'+
+      '<div class="right">'+lead+pill(d._b)+'</div></div>';
+  }
+  function groupKey(d){
+    if(groupby==='area') return d.area;
+    if(groupby==='status') return BUCKET_LABEL[d._b];
+    if(groupby==='tech') return d._techs[0]||'—';
+    if(groupby==='asn') return d.asn_org||'(sin ASN)';
+    return '';
+  }
+  function render(){
+    renderTiles(); renderFacets();
+    var list=current();
+    list.sort(function(a,b){return a.host.localeCompare(b.host);});
+    $('#count').textContent = list.length+' / '+DATA.length+' hosts';
+    var chips=[];
+    F.area.forEach(function(v){chips.push(v);}); F.tech.forEach(function(v){chips.push(v);});
+    F.asn.forEach(function(v){chips.push(v);});
+    F.status.forEach(function(v){chips.push(BUCKET_LABEL[v]);}); if(onlyLead)chips.push('con lead'); if(q)chips.push('"'+q+'"');
+    $('#active').textContent = chips.length?('filtros: '+chips.join(' · ')):'';
+
+    if(!list.length){ $('#list').innerHTML='<div class="empty">Sin hosts para este filtro.</div>'; return; }
+    if(groupby==='none'){
+      $('#list').innerHTML='<div class="rows" style="border:0;margin:0;padding:0">'+list.map(rowHTML).join('')+'</div>';
+      return;
+    }
+    var groups={};
+    list.forEach(function(d){ var k=groupKey(d); (groups[k]=groups[k]||[]).push(d); });
+    var order=Object.keys(groups).sort(function(a,b){return groups[b].length-groups[a].length||a.localeCompare(b);});
+    $('#list').innerHTML = order.map(function(k){
+      var col = collapsed.has(k)?' collapsed':'';
+      return '<section class="group'+col+'" data-g="'+encodeURIComponent(k)+'">'+
+        '<div class="ghead"><span class="caret">▼</span><h2>'+k+'</h2><span class="gc">'+groups[k].length+'</span></div>'+
+        '<div class="rows">'+groups[k].map(rowHTML).join('')+'</div></section>';
+    }).join('');
+  }
+
+  // ---- detail ----
+  function openDetail(host){
+    var d=DATA.filter(function(x){return x.host===host;})[0]; if(!d) return;
+    selHost=host;
+    var rows=[
+      ['Área',d.area],['Estado',d.status+' ('+d.code+')'],['Server',d.server||'—'],
+      ['Edge',d.edge||'—'],['Framework',d.framework||'—'],
+      ['Versión',(d.version&&d.version.length)?d.version.join(', '):'—'],
+      ['IP',d.ip||'—'],['ASN',d.asn?(d.asn+' · '+(d.asn_org||'')):'—'],
+      ['Infra',d.infra||'—'],['CNAME',d.cname||'—'],['Redirect',d.loc||'—']
+    ].map(function(kv){return '<dt>'+kv[0]+'</dt><dd>'+esc(kv[1])+'</dd>';}).join('');
+    var leadHTML = d.lead ? '<p class="dsection">Lead asociado</p><div class="leadbadge" style="display:inline-block">'+d.lead+'</div>'
+      +'<p style="color:var(--soft);font-size:12.5px;margin:8px 0 0">Ver detalle en <code>targets/spotify/leads.md</code>.</p>' : '';
+    $('#detail').innerHTML =
+      '<div class="dtop"><div><div class="pill p-'+d._b+'" style="margin-bottom:8px">'+BUCKET_LABEL[d._b]+'</div>'+
+      '<div class="h">'+d.host+'</div></div><button class="dclose" id="dclose" aria-label="Cerrar">✕</button></div>'+
+      '<div class="dbody"><dl class="kv">'+rows+'</dl>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:5px;margin:0 0 18px">'+d._techs.map(function(t){return '<span class="tg">'+esc(t)+'</span>';}).join('')+'</div>'+
+      leadHTML+
+      '<p class="dsection" style="margin-top:20px">Acción</p>'+
+      '<a class="dopen" href="https://'+encodeURIComponent(d.host).replace(/%2F/g,'/')+'/" target="_blank" rel="noopener noreferrer">Abrir https://'+d.host+' ↗</a>'+
+      '</div>';
+    $('#detail').classList.add('show'); $('#detail').setAttribute('aria-hidden','false');
+    $('#scrim').classList.add('show');
+    $('#dclose').addEventListener('click',closeDetail);
+    render();
+  }
+  function closeDetail(){ selHost=null; $('#detail').classList.remove('show'); $('#detail').setAttribute('aria-hidden','true'); $('#scrim').classList.remove('show'); render(); }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  // ---- events ----
+  document.addEventListener('click',function(e){
+    var tile=e.target.closest('.tile');
+    if(tile){ var k=tile.dataset.k;
+      if(k==='all'){ F.status.clear(); onlyLead=false; }
+      else if(k==='lead'){ onlyLead=!onlyLead; }
+      else { if(F.status.has(k))F.status.delete(k); else F.status.add(k); }
+      render(); return;
+    }
+    var fi=e.target.closest('.fitem');
+    if(fi){ var kind=fi.dataset.kind, v=decodeURIComponent(fi.dataset.v);
+      var set=F[kind]; if(set.has(v))set.delete(v); else set.add(v); render(); return;
+    }
+    var gh=e.target.closest('.ghead');
+    if(gh){ var g=decodeURIComponent(gh.parentNode.dataset.g); if(collapsed.has(g))collapsed.delete(g); else collapsed.add(g);
+      gh.parentNode.classList.toggle('collapsed'); return; }
+    var row=e.target.closest('.row');
+    if(row){ openDetail(row.dataset.host); return; }
+    if(e.target.id==='scrim') closeDetail();
+  });
+  $('#q').addEventListener('input',function(e){ q=e.target.value.trim().toLowerCase(); render(); });
+  $('#groupby').addEventListener('change',function(e){ groupby=e.target.value; collapsed.clear(); render(); });
+  $('#clear').addEventListener('click',function(){ F.area.clear();F.tech.clear();F.status.clear();F.asn.clear();onlyLead=false;q='';$('#q').value='';collapsed.clear(); render(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDetail(); });
+
+  render();
+})();
+</script>

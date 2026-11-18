@@ -1,0 +1,104 @@
+# Clickjacking -- Top 100 reportes H1
+
+_Generado el 2026-10-30 | Ordenado por bounty/upvotes_
+
+- [Cross-site Scripting (XSS) - Stored in RDoc wiki pages](https://hackerone.com/reports/662287) -- GitLab | $3,500 | UI Redressing (Clickjacking) | 282up
+- [RCE of Burp  Scanner / Crawler via Clickjacking](https://hackerone.com/reports/1274695) -- PortSwigger Web Security | $3,000 | Command Injection - Generic | 172up
+- [Twitter Periscope Clickjacking Vulnerability](https://hackerone.com/reports/591432) -- X / xAI | $1,120 | UI Redressing (Clickjacking) | 144up
+- [Clickjacking Periscope.tv on Chrome](https://hackerone.com/reports/198622) -- X / xAI | $560 | UI Redressing (Clickjacking) | 11up
+- [Clickjacking Vulnerability Can Leads To Delete Developer APP](https://hackerone.com/reports/1416612) -- TikTok | $500 | UI Redressing (Clickjacking) | 27up
+- [Clickjacking Vulnerability In Whole Page Ads Tiktok](https://hackerone.com/reports/1418857) -- TikTok | $500 | UI Redressing (Clickjacking) | 8up
+- [Ошибка фильтрации](https://hackerone.com/reports/34686) -- Mail.ru | $500 | UI Redressing (Clickjacking) | 4up
+- [Following a User After Favoriting Actually Follows Another User (related to #95243)](https://hackerone.com/reports/97510) -- X / xAI | $280 | UI Redressing (Clickjacking) | 1up
+- [RTLO character in file names](https://hackerone.com/reports/210354) -- Open-Xchange | $250 | UI Redressing (Clickjacking) | 8up
+- [clickjacing can lead to account takeover](https://hackerone.com/reports/2119892) -- pixiv | $200 | UI Redressing (Clickjacking) | 70up
+- [Modifying application settings via clickjacking on o2.mail.ru](https://hackerone.com/reports/355774) -- Mail.ru | $150 | UI Redressing (Clickjacking) | 13up
+- [Clickjacking at ylands.com](https://hackerone.com/reports/405342) -- BOHEMIA INTERACTIVE a.s. | $80 | UI Redressing (Clickjacking) | 22up
+- [Highly wormable clickjacking in player card](https://hackerone.com/reports/85624) -- X / xAI | UI Redressing (Clickjacking) | 134up
+- [Clickjacking on donation page](https://hackerone.com/reports/921709) -- WordPress | UI Redressing (Clickjacking) | 90up
+- [Clickjacking in main domain https://topechelon.com/](https://hackerone.com/reports/2964441) -- Top Echelon Software | 80up
+- [Viral Direct Message Clickjacking via link truncation leading to capture of both Google credentials & installation of malicious 3rd party Twitter App](https://hackerone.com/reports/643274) -- X / xAI | UI Redressing (Clickjacking) | 64up
+- [Double Clickjacking Attack on WakaTime OAuth Authorization Flow at https://wakatime.com/oauth/authorize](https://hackerone.com/reports/3287060) -- WakaTime | Violation of Secure Design Principles | 57up
+- [Sensitive Clickjacking on admin login page.](https://hackerone.com/reports/389145) -- Shipt | UI Redressing (Clickjacking) | 55up
+- [Stealing User emails by clickjacking cards.twitter.com/xxx/xxx](https://hackerone.com/reports/154963) -- X / xAI | UI Redressing (Clickjacking) | 49up
+- [Clickjacking vkpay](https://hackerone.com/reports/374817) -- VK.com | UI Redressing (Clickjacking) | 44up
+- [[api.tumblr.com] Exploiting clickjacking vulnerability to trigger self DOM-based XSS](https://hackerone.com/reports/953579) -- Automattic | UI Redressing (Clickjacking) | 32up
+- [URL is vulnerable to clickjacking  https://app.passit.io/](https://hackerone.com/reports/530008) -- Passit | UI Redressing (Clickjacking) | 28up
+- [Clickjacking in the admin page](https://hackerone.com/reports/728004) -- Rocket.Chat | UI Redressing (Clickjacking) | 21up
+- [Clickjacking on cas.acronis.com login page](https://hackerone.com/reports/971234) -- Acronis | UI Redressing (Clickjacking) | 19up
+- [Improper markup sanitization.](https://hackerone.com/reports/289823) -- Automattic | UI Redressing (Clickjacking) | 19up
+- [CRITICAL-CLICKJACKING at Yelp Reservations Resulting in exposure of victim Private Data (Email info) + Victim Credit Card MissUse.](https://hackerone.com/reports/355859) -- Yelp | Improper Access Control - Generic | 18up
+- [RTLO char allowed in chat](https://hackerone.com/reports/196222) -- Snapchat | UI Redressing (Clickjacking) | 18up
+- [self-xss with ClickJacking can leads to account takeover in Firefox](https://hackerone.com/reports/892289) -- Imgur | Cross-site Scripting (XSS) - DOM | 17up
+- [Clickjacking at join.nordvpn.com](https://hackerone.com/reports/765955) -- Nord Security | 17up
+- [Clickjacking in [exchangemarketplace.com]](https://hackerone.com/reports/658217) -- Shopify | UI Redressing (Clickjacking) | 17up
+- [Clickjacking at open.rocket.chat](https://hackerone.com/reports/1584034) -- Rocket.Chat | UI Redressing (Clickjacking) | 16up
+- [Clickjacking In jobs.wordpress.net](https://hackerone.com/reports/223024) -- WordPress | UI Redressing (Clickjacking) | 16up
+- [Prepopulation of email address and name leaks information provided to other merchants](https://hackerone.com/reports/316290) -- Coinbase | UI Redressing (Clickjacking) | 16up
+- [Improper markup sanitisation in Simplenote Android application.](https://hackerone.com/reports/297547) -- Automattic | UI Redressing (Clickjacking) | 16up
+- [OAuth authorization page vulnerable to clickjacking](https://hackerone.com/reports/65825) -- Coinbase | Improper Authentication - Generic | 16up
+- [Reflected XSS through ClickJacking](https://hackerone.com/reports/1171403) -- U.S. Dept Of Defense | Cross-site Scripting (XSS) - Reflected | 14up
+- [Make user buy items via clickjacking possibility](https://hackerone.com/reports/471967) -- Mail.ru | UI Redressing (Clickjacking) | 14up
+- [Crafted frame injection leading to form-based UI redressing.](https://hackerone.com/reports/291683) -- Automattic | UI Redressing (Clickjacking) | 14up
+- [Clickjacking wordcamp.org](https://hackerone.com/reports/230581) -- WordPress | UI Redressing (Clickjacking) | 14up
+- [Clickjacking at  app.lemlist.com](https://hackerone.com/reports/1574017) -- lemlist | UI Redressing (Clickjacking) | 13up
+- [Bypass CSP  frame-ancestors at olx.co.za, olx.com.gh](https://hackerone.com/reports/371980) -- OLX | UI Redressing (Clickjacking) | 13up
+- [Clickjacking Vulnerability found on Yelp](https://hackerone.com/reports/214087) -- Yelp | Cross-Site Request Forgery (CSRF) | 13up
+- [Modify account details by exploiting clickjacking vulnerability on refer.wordpress.com](https://hackerone.com/reports/765355) -- Automattic | UI Redressing (Clickjacking) | 12up
+- [URL is vulnerable to clickjacking](https://hackerone.com/reports/712376) -- MyCrypto | UI Redressing (Clickjacking) | 12up
+- [Clickjacking on https://www.goodhire.com/api](https://hackerone.com/reports/298028) -- Inflection | UI Redressing (Clickjacking) | 12up
+- [Following links are vulnerable to clickjacking](https://hackerone.com/reports/289246) -- Semrush | UI Redressing (Clickjacking) | 12up
+- [Clickjacking mercantile.wordpress.org](https://hackerone.com/reports/264125) -- WordPress | UI Redressing (Clickjacking) | 12up
+- [Clickjacking on Mixmax.com](https://hackerone.com/reports/234713) -- Mixmax | UI Redressing (Clickjacking) | 12up
+- [Reflected XSS through clickjacking at https://████](https://hackerone.com/reports/1149144) -- U.S. Dept Of Defense | Cross-site Scripting (XSS) - Reflected | 11up
+- [Clickjacking Vulnerability in sifchain.finance](https://hackerone.com/reports/1185949) -- Sifchain | UI Redressing (Clickjacking) | 11up
+- [Certificate warnings and similar UI elements in Web protection of Anti-Virus products family are susceptible to clickjacking](https://hackerone.com/reports/463695) -- Kaspersky | UI Redressing (Clickjacking) | 11up
+- [clickjacking в /lead_forms_app.php](https://hackerone.com/reports/294334) -- VK.com | 11up
+- [Single Sing On - Clickjacking](https://hackerone.com/reports/299009) -- Semrush | UI Redressing (Clickjacking) | 11up
+- [AWS S3 website can't serve security headers, may allow clickjacking](https://hackerone.com/reports/149572) -- Legal Robot | UI Redressing (Clickjacking) | 11up
+- [Clickjacking URLS](https://hackerone.com/reports/1039805) -- Nextcloud | 10up
+- [Get ip and Geo location any user via Clickjacking with inspectlet technology](https://hackerone.com/reports/998555) -- Acronis | Information Disclosure | 10up
+- [Delete images of users  with clickjacking in https://pw.mail.ru](https://hackerone.com/reports/675614) -- Mail.ru | UI Redressing (Clickjacking) | 9up
+- [Bypass of the Clickjacking protection on Flickr using data URL in iframes](https://hackerone.com/reports/7264) -- Yahoo! | UI Redressing (Clickjacking) | 9up
+- [Shop - Reflected  XSS  With  Clickjacking Leads to Steal User's Cookie  In Two Domain](https://hackerone.com/reports/1221942) -- Meredith | Cross-site Scripting (XSS) - Reflected | 8up
+- [Clickjacking](https://hackerone.com/reports/688546) -- Palo Alto Software | 8up
+- [Bypassing the Trusted Link Alert System](https://hackerone.com/reports/384569) -- Vanilla | UI Redressing (Clickjacking) | 8up
+- [Account takeover vulnerability by editor role privileged users/attackers via clickjacking](https://hackerone.com/reports/388254) -- WordPress | UI Redressing (Clickjacking) | 8up
+- [Clickjacking in Legalrobot app](https://hackerone.com/reports/270454) -- Legal Robot | UI Redressing (Clickjacking) | 8up
+- [Clickjacking - https://mercantile.wordpress.org/](https://hackerone.com/reports/258283) -- WordPress | UI Redressing (Clickjacking) | 8up
+- [Clickjacking on authorized page https://wakatime.com/share/embed](https://hackerone.com/reports/244967) -- WakaTime | UI Redressing (Clickjacking) | 8up
+- [Gitlab.com is vulnerable to reverse tabnabbing. (#2)](https://hackerone.com/reports/212629) -- GitLab | UI Redressing (Clickjacking) | 8up
+- [Clickjacking to change email address](https://hackerone.com/reports/783191) -- Gener8 | UI Redressing (Clickjacking) | 7up
+- [Clickjacking misconfiguration bug](https://hackerone.com/reports/1176104) -- Sifchain | 7up
+- [Khan Academy ClickJacking to Steal Users's Credintials](https://hackerone.com/reports/639682) -- Khan Academy | 7up
+- [Clickjacking lead to remove review](https://hackerone.com/reports/965141) -- Yelp | 7up
+- [Clickjacking on my.stripo.email for MailChimp credentials](https://hackerone.com/reports/737625) -- Stripo Inc | UI Redressing (Clickjacking) | 7up
+- [Click Jacking Nextcloud](https://hackerone.com/reports/347782) -- Nextcloud | UI Redressing (Clickjacking) | 7up
+- [Clickjacking](https://hackerone.com/reports/200419) -- Pushwoosh | UI Redressing (Clickjacking) | 7up
+- [Registration bypass using OAuth logical bug](https://hackerone.com/reports/64946) -- Legal Robot | UI Redressing (Clickjacking) | 7up
+- [UI Redressing ( ClickJacking ) Issue on Information submit form](https://hackerone.com/reports/163753) -- Legal Robot | UI Redressing (Clickjacking) | 7up
+- [Vulnerable for clickjacking attack](https://hackerone.com/reports/1188639) -- Sifchain | UI Redressing (Clickjacking) | 6up
+- [Clickjacking Vulnerability via https://profile.my.games/gamecenter/profile/ can lead to sensitive cross site actions (Bypass X-Frame-Options)](https://hackerone.com/reports/974090) -- Mail.ru | UI Redressing (Clickjacking) | 6up
+- [UI Redressing on Embedded Charts](https://hackerone.com/reports/244697) -- WakaTime | UI Redressing (Clickjacking) | 6up
+- [[ibank.qiwi.ru] UI Redressing via Request-URI](https://hackerone.com/reports/164153) -- QIWI | Violation of Secure Design Principles | 6up
+- [Found clickjacking vulnerability](https://hackerone.com/reports/119828) -- LeaseWeb | UI Redressing (Clickjacking) | 6up
+- [User Impersonation through sendMessage options](https://hackerone.com/reports/1031525) -- Rocket.Chat | UI Redressing (Clickjacking) | 5up
+- [Clickjacking Vulnerability via https://www.donationalerts.com/help/support leads to bypass for widget.support.my.games X-Frame Options](https://hackerone.com/reports/1027192) -- Mail.ru | UI Redressing (Clickjacking) | 5up
+- [ClickJacking on IMPORTANT Functions of Yelp](https://hackerone.com/reports/305128) -- Yelp | UI Redressing (Clickjacking) | 5up
+- [Clickjacking](https://hackerone.com/reports/832593) -- Kubernetes | UI Redressing (Clickjacking) | 5up
+- [frame injection on bittorrent.com](https://hackerone.com/reports/846430) -- BTFS | UI Redressing (Clickjacking) | 5up
+- [UI Redressing (Clickjacking) vulnerability](https://hackerone.com/reports/776932) -- Nord Security | UI Redressing (Clickjacking) | 5up
+- [clickjacking on https://gratipay.com/on/npm/[text]](https://hackerone.com/reports/267189) -- Gratipay | UI Redressing (Clickjacking) | 5up
+- [Clickjacking docs.weblate.org](https://hackerone.com/reports/223391) -- Weblate | 5up
+- [https://admin.corp.cuvva.co/ is vulnerable to Clickjacking attacks due to missing X-Frame-Options](https://hackerone.com/reports/231434) -- Cuvva | UI Redressing (Clickjacking) | 5up
+- [Gitlab.com is vulnerable to reverse tabnabbing via AsciiDoc links. (#3)](https://hackerone.com/reports/213114) -- GitLab | UI Redressing (Clickjacking) | 5up
+- [nginx server vulnerable](https://hackerone.com/reports/137230) -- Open-Xchange | UI Redressing (Clickjacking) | 5up
+- [Missing security headers, possible clickjacking](https://hackerone.com/reports/64645) -- Legal Robot | UI Redressing (Clickjacking) | 5up
+- [Click Jacking](https://hackerone.com/reports/163888) -- Legal Robot | UI Redressing (Clickjacking) | 5up
+- [CJ vulnerability in subdomain](https://hackerone.com/reports/140392) -- Deriv.com | UI Redressing (Clickjacking) | 5up
+- [ClickJacking on http://au.launch.yahoo.com](https://hackerone.com/reports/1229) -- Yahoo! | UI Redressing (Clickjacking) | 5up
+- [clickjacking on deleting user's clips [https://crossclip.com/clips]](https://hackerone.com/reports/1294767) -- Logitech | UI Redressing (Clickjacking) | 4up
+- [CLICKJACKING LEADS TO DEACTIVATE ACCOUNT](https://hackerone.com/reports/1301113) -- UPchieve | UI Redressing (Clickjacking) | 4up
+- [Clickjacking on profile page leading to unauthorized changes](https://hackerone.com/reports/1198907) -- UPchieve | UI Redressing (Clickjacking) | 4up
+- [Clickjacking Vulnerability via https://webagent.mail.ru leading to protection bypass for https://web.icq.com/ end point](https://hackerone.com/reports/918923) -- Mail.ru | UI Redressing (Clickjacking) | 4up
+- [RTLO character allowed in shared files](https://hackerone.com/reports/229170) -- Nextcloud | UI Redressing (Clickjacking) | 4up

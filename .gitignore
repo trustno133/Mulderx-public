@@ -1,0 +1,43 @@
+# Target-specific data and credentials
+.credentials/
+targets/
+reports/
+.bb_pipeline/
+.scratch/
+.tmp*/
+
+# Local settings, generated artifacts, and runtime state
+.claude/settings.local.json
+.claude/settings.json
+.codex/sessions/
+.env
+.env.*
+!.env.example
+*.log
+*.sqlite
+*.db
+*.faiss
+__pycache__/
+.pytest_cache/
+node_modules/
+
+# Recon outputs and local wordlists
+recon/
+results/
+output/
+seclist/
+
+# Local browser state and captured HTTP evidence
+.playwright-mcp/
+.playwright/
+playwright-report/
+test-results/
+captures/
+screenshots/
+private-artifacts/
+*.har
+*.body
+*.headers
+*.pcap
+*.pcapng
+*.trace

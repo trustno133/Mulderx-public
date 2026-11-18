@@ -1,0 +1,104 @@
+# DoS -- Top 100 reportes H1
+
+_Generado el 2026-10-30 | Ordenado por bounty/upvotes_
+
+- [Oracle Webcenter Sites administrative and hi-privilege access available directly from the internet (/cs/Satellite)](https://hackerone.com/reports/170532) -- LocalTapiola | $18,000 | Uncontrolled Resource Consumption | 264up
+- [Ability to DOS any organization's SSO and open up the door to account takeovers](https://hackerone.com/reports/976603) -- Superhuman (formerly Grammarly) | $10,500 | Improper Authentication - Generic | 259up
+- [Invalid handling of zero-length heredoc identifiers leads to infinite loop in the sandbox](https://hackerone.com/reports/187305) -- shopify-scripts | $10,000 | Uncontrolled Resource Consumption | 23up
+- [Segfault and/or potential unwanted (byte)code execution with "break" and "--=" inside a loop](https://hackerone.com/reports/183356) -- shopify-scripts | $10,000 | Uncontrolled Resource Consumption | 14up
+- [Buffer overflow in mrb_time_asctime](https://hackerone.com/reports/188326) -- shopify-scripts | $10,000 | Uncontrolled Resource Consumption | 13up
+- [Broken handling of maximum number of method call arguments leads to segfault](https://hackerone.com/reports/182484) -- shopify-scripts | $10,000 | Uncontrolled Resource Consumption | 10up
+- [Null pointer derefence due to bug in codegen with negation without using value](https://hackerone.com/reports/187536) -- shopify-scripts | $10,000 | Uncontrolled Resource Consumption | 9up
+- [Range#initialize_copy null pointer dereference](https://hackerone.com/reports/181685) -- shopify-scripts | $10,000 | Uncontrolled Resource Consumption | 9up
+- [Range constructor type confusion DoS](https://hackerone.com/reports/181910) -- shopify-scripts | $10,000 | Uncontrolled Resource Consumption | 7up
+- [Segfault in mruby, mruby_engine and the parent MRI Ruby due to null pointer dereference](https://hackerone.com/reports/181828) -- shopify-scripts | $10,000 | Uncontrolled Resource Consumption | 4up
+- [DoS on PayPal via web cache poisoning](https://hackerone.com/reports/622122) -- PayPal | $9,700 | Uncontrolled Resource Consumption | 851up
+- [Segmentation fault when a Ruby method is invoked by a C method via Object#send](https://hackerone.com/reports/183425) -- shopify-scripts | $8,000 | Uncontrolled Resource Consumption | 14up
+- [Null target_class DoS](https://hackerone.com/reports/183405) -- shopify-scripts | $8,000 | Uncontrolled Resource Consumption | 14up
+- [Denial of service due to invalid memory access in mrb_ary_concat](https://hackerone.com/reports/184712) -- shopify-scripts | $8,000 | Uncontrolled Resource Consumption | 9up
+- [Denial of Service in mruby due to null pointer dereference](https://hackerone.com/reports/181232) -- shopify-scripts | $8,000 | Uncontrolled Resource Consumption | 8up
+- [Undefined method_missing null pointer dereference](https://hackerone.com/reports/181695) -- shopify-scripts | $8,000 | Uncontrolled Resource Consumption | 7up
+- [ruby DoS https://www.mruby.science](https://hackerone.com/reports/180695) -- shopify-scripts | $8,000 | Uncontrolled Resource Consumption | 5up
+- [Segmentation fault due to bad memory access in kh_get_mt](https://hackerone.com/reports/188313) -- shopify-scripts | $8,000 | Uncontrolled Resource Consumption | 4up
+- [DOS via issue preview](https://hackerone.com/reports/1543718) -- GitLab | $7,640 | Uncontrolled Resource Consumption | 25up
+- [Possible DoS Vulnerability with Range Header in Rack](https://hackerone.com/reports/2520679) -- Internet Bug Bounty | $5,420 | 56up
+- [DOS of RSKJ server](https://hackerone.com/reports/2105808) -- Rootstock Labs | $5,000 | Uncontrolled Resource Consumption | 120up
+- [CVE-2024-34750 Apache Tomcat DoS vulnerability in HTTP/2 connector](https://hackerone.com/reports/2586226) -- Internet Bug Bounty | $4,920 | Uncontrolled Resource Consumption | 60up
+- [important: Apache HTTP Server: Crash resulting in Denial of Service in mod_proxy via a malicious request (CVE-2024-38477)](https://hackerone.com/reports/2585375) -- Internet Bug Bounty | $4,920 | NULL Pointer Dereference | 27up
+- [Denial of Service caused by HTTP/2 CONTINUATION Flood](https://hackerone.com/reports/2334401) -- Internet Bug Bounty | $4,860 | Uncontrolled Resource Consumption | 42up
+- [DoS via markdown API from unauthenticated user](https://hackerone.com/reports/1619604) -- GitHub | $4,000 | Uncontrolled Resource Consumption | 54up
+- [ReDoS( Ruby, Time)](https://hackerone.com/reports/1929567) -- Internet Bug Bounty | $4,000 | Uncontrolled Resource Consumption | 51up
+- [DoS through PeerExplorer](https://hackerone.com/reports/363636) -- Rootstock Labs | $4,000 | Uncontrolled Resource Consumption | 50up
+- [Regexes with large repetitions on empty sub-expressions take a very long time to parse](https://hackerone.com/reports/1518036) -- Internet Bug Bounty | $4,000 | Uncontrolled Resource Consumption | 25up
+- [ReDoS (Rails::Html::PermitScrubber.scrub_attribute)](https://hackerone.com/reports/1804128) -- Internet Bug Bounty | $4,000 | 15up
+- [Assertion failed in node::http2::Http2Session::~Http2Session() leads to HTTP/2 server crash](https://hackerone.com/reports/2453328) -- Internet Bug Bounty | $3,645 | Uncontrolled Resource Consumption | 39up
+- [http: Reading unprocessed HTTP request with unbounded chunk extension allows DoS attacks](https://hackerone.com/reports/2375446) -- Internet Bug Bounty | $3,495 | Uncontrolled Resource Consumption | 40up
+- [DoS on the Issue page by exploiting Mermaid.](https://hackerone.com/reports/470067) -- GitLab | $3,000 | Uncontrolled Resource Consumption | 145up
+- [https://themes.shopify.com::: Host header web cache poisoning lead to DoS](https://hackerone.com/reports/1096609) -- Shopify | $2,900 | Uncontrolled Resource Consumption | 82up
+- [ReDoS Vulnerability in HTTP Accept Headers Parsing](https://hackerone.com/reports/2584376) -- Internet Bug Bounty | $2,642 | 55up
+- [Apache HTTP Server: HTTP/2 DoS by memory exhaustion on endless continuation frames](https://hackerone.com/reports/2453322) -- Internet Bug Bounty | $2,580 | Uncontrolled Resource Consumption | 40up
+- [CVE-2023-46695: Potential denial of service vulnerability in UsernameField on Windows](https://hackerone.com/reports/2258758) -- Internet Bug Bounty | $2,540 | Uncontrolled Resource Consumption | 28up
+- [Denial of service via cache poisoning](https://hackerone.com/reports/409370) -- HackerOne | $2,500 | Uncontrolled Resource Consumption | 253up
+- [Uploading large payload on domain instructions causes server-side DoS](https://hackerone.com/reports/887321) -- HackerOne | $2,500 | Uncontrolled Resource Consumption | 210up
+- [Multiple endpoints are vulnerable to XML External Entity injection (XXE)](https://hackerone.com/reports/72272) -- Pornhub | $2,500 | Denial of Service | 138up
+- [Near to Infinite loop when changing Group's name that has API token as Team Member](https://hackerone.com/reports/880187) -- HackerOne | $2,500 | 77up
+- [Potential DoS vulnerability in Django in multipart parser](https://hackerone.com/reports/1904097) -- Internet Bug Bounty | $2,400 | Uncontrolled Resource Consumption | 47up
+- [potential denial of service attack via the locale parameter](https://hackerone.com/reports/1746098) -- Internet Bug Bounty | $2,400 | Uncontrolled Resource Consumption | 9up
+- [Rack CVE-2022-30122: Denial of Service Vulnerability in Rack Multipart Parsing](https://hackerone.com/reports/1627159) -- Internet Bug Bounty | $2,400 | 9up
+- [CVE-2022-32206: HTTP compression denial of service](https://hackerone.com/reports/1614330) -- Internet Bug Bounty | $2,400 | Allocation of Resources Without Limits or Throttling | 8up
+- [DOS: taking down a 1k users Gitlab EE instance or multiple Sidekiq instances by importing a malicious repo from a Github EE self-hosted server](https://hackerone.com/reports/2499070) -- GitLab | $2,300 | Uncontrolled Resource Consumption | 64up
+- [DOS via move_issue](https://hackerone.com/reports/1543584) -- GitLab | $2,300 | Uncontrolled Resource Consumption | 19up
+- [CVE-2024-41989: Denial-Of-Service vulnerability in the floatformat template filter when input string contains a big exponent in scientific notation](https://hackerone.com/reports/2644244) -- Internet Bug Bounty | $2,142 | Uncontrolled Resource Consumption | 49up
+- [[CVE-2024-35176] DoS vulnerability in REXML](https://hackerone.com/reports/2645836) -- Internet Bug Bounty | $2,142 | Allocation of Resources Without Limits or Throttling | 19up
+- [CVE-2024-38875: Denial-Of-Service through uncontrolled resource consumption caused by poor time complexity of strip_punctuation .](https://hackerone.com/reports/2591681) -- Internet Bug Bounty | $2,142 | Uncontrolled Resource Consumption | 14up
+- [[Java] CWE-755: Query to detect Local Android DoS caused by NFE](https://hackerone.com/reports/1061211) -- GitHub Security Lab | $1,800 | 16up
+- [Denial of Service via Hyperlinks in Posts](https://hackerone.com/reports/1077136) -- Slack | $1,500 | Uncontrolled Resource Consumption | 109up
+- [DOS attack by consuming all CPU and using all available memory](https://hackerone.com/reports/479144) -- Tron Foundation | $1,500 | Denial of Service | 23up
+- [DOS validator nodes of blockchain to block external connections](https://hackerone.com/reports/1695472) -- Linux Foundation Decentralized Trust | $1,500 | Uncontrolled Resource Consumption | 20up
+- [Access Violation Reading in libfaad_plugin](https://hackerone.com/reports/502816) -- VLC (European Commission - DIGIT) | $1,121 | Integer Underflow | 106up
+- [url that twitter mobile site can not load](https://hackerone.com/reports/500686) -- X / xAI | $1,120 | Uncontrolled Resource Consumption | 142up
+- [Denial of Service - twitter.com & mobile.twitter.com](https://hackerone.com/reports/903740) -- X / xAI | $1,120 | Uncontrolled Resource Consumption | 88up
+- [Denial of Service (DoS) Vulnerability in Drafts Creation Endpoint](https://hackerone.com/reports/3400140) -- Discourse | $1,024 | Uncontrolled Resource Consumption | 97up
+- [Node disk DOS by writing to container /etc/hosts](https://hackerone.com/reports/867699) -- Kubernetes | $1,000 | Uncontrolled Resource Consumption | 161up
+- [a very long name in hey.com can prevent anyone from accessing their contacts and probably can cause denial of service](https://hackerone.com/reports/1018037) -- Basecamp | $1,000 | Uncontrolled Resource Consumption | 132up
+- [HTML Injection in Swing can disclose netNTLM hash or cause DoS](https://hackerone.com/reports/1054382) -- PortSwigger Web Security | $1,000 | Information Disclosure | 117up
+- [DoS attack via comment on Issue](https://hackerone.com/reports/557154) -- GitLab | $1,000 | Uncontrolled Resource Consumption | 84up
+- [All functions that allow users to specify color code are vulnerable to ReDoS](https://hackerone.com/reports/511381) -- GitLab | $1,000 | Uncontrolled Resource Consumption | 53up
+- [Integer overflow leading to buffer overflow](https://hackerone.com/reports/424447) -- Internet Bug Bounty | $1,000 | Integer Overflow | 52up
+- [ICQ Android APP remote DoS](https://hackerone.com/reports/892510) -- Mail.ru | $1,000 | Uncontrolled Resource Consumption | 23up
+- [Chained vulnerabilities create DOS attack against users on desafio5estrelas.com](https://hackerone.com/reports/624645) -- Uber | $1,000 | Cross-Site Request Forgery (CSRF) | 17up
+- [Incorrect code generation when result of NODE_NEGATE is not used](https://hackerone.com/reports/191689) -- shopify-scripts | $1,000 | Uncontrolled Resource Consumption | 8up
+- [Invalid memory write caused by incorrect upper bound in array_copy](https://hackerone.com/reports/185899) -- shopify-scripts | $1,000 | Uncontrolled Resource Consumption | 6up
+- [CodeQL query for finding ReDoS and Regex Injection vulnerabilities in Java](https://hackerone.com/reports/801230) -- GitHub Security Lab | $1,000 | 5up
+- [Segfault when passing invalid values to `values_at`](https://hackerone.com/reports/190133) -- shopify-scripts | $1,000 | Uncontrolled Resource Consumption | 5up
+- [Null pointer dereference regression in parse.y](https://hackerone.com/reports/185387) -- shopify-scripts | $1,000 | Uncontrolled Resource Consumption | 5up
+- [SSL_peek() hang on empty record (CVE-2016-6305)](https://hackerone.com/reports/288993) -- Internet Bug Bounty | $1,000 | Uncontrolled Resource Consumption | 4up
+- [Segmentation fault while printing backtrace](https://hackerone.com/reports/204047) -- shopify-scripts | $1,000 | Uncontrolled Resource Consumption | 2up
+- [Heap Buffer Overflow in mrb_hash_keys](https://hackerone.com/reports/216992) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 8up
+- [Use-after-free leading to an invalid pointer dereference](https://hackerone.com/reports/213261) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 7up
+- [Null pointer dereferences in ary_concat](https://hackerone.com/reports/214171) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 5up
+- [Null pointer dereferences from mrb_vm_exec](https://hackerone.com/reports/210671) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 5up
+- [Heap Buffer overflow in mrb_funcall_with_block](https://hackerone.com/reports/196819) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 5up
+- [Null pointer dereferences in mrb_get_args](https://hackerone.com/reports/216351) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 4up
+- [Heap Buffer Overflow while processing OP_SEND](https://hackerone.com/reports/206239) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 4up
+- [Invalid pointer dereference in OP_ENTER](https://hackerone.com/reports/218570) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 3up
+- [Null pointer dereference in 'get_file'](https://hackerone.com/reports/211021) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 3up
+- [Invalid Pointer Reference from OP_RESCUE](https://hackerone.com/reports/210246) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 3up
+- [Heap Buffer overflow in mrb_ary_unshift](https://hackerone.com/reports/205521) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 3up
+- [Use After Free in mrb_vm_exec](https://hackerone.com/reports/205536) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 3up
+- [Still heap overflow in mrb_ary_splice](https://hackerone.com/reports/197719) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 3up
+- [Null pointer dereference in mrb_str_prepend](https://hackerone.com/reports/193081) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 3up
+- [Null pointer dereference in mark_context_stack](https://hackerone.com/reports/208526) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 2up
+- [Null pointer dereference in mrb_class](https://hackerone.com/reports/212107) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 2up
+- [Heap buffer overflow with long array assignment](https://hackerone.com/reports/209449) -- shopify-scripts | $800 | Uncontrolled Resource Consumption | 2up
+- [Google  Maps API key stored as plain text leading to DOS and financial damage](https://hackerone.com/reports/1093667) -- Zenly | $750 | Cleartext Storage of Sensitive Information | 51up
+- [Cookie poisoning leads to DOS and Privacy Violation](https://hackerone.com/reports/1067809) -- CS Money | $700 | Privacy Violation | 30up
+- [ReDoS in syntax highlighting due to Rouge](https://hackerone.com/reports/1283484) -- GitLab | $600 | Uncontrolled Resource Consumption | 13up
+- [Denial of Service  [Chrome]](https://hackerone.com/reports/921286) -- X / xAI | $560 | Uncontrolled Resource Consumption | 66up
+- [cookie injection allow dos attack to periscope.tv](https://hackerone.com/reports/583819) -- X / xAI | $560 | Uncontrolled Resource Consumption | 26up
+- [lack of input validation that can lead Denial of Service (DOS)](https://hackerone.com/reports/768677) -- X / xAI | $560 | Uncontrolled Resource Consumption | 22up
+- [iOS app crashed by specially crafted direct message reactions](https://hackerone.com/reports/784676) -- X / xAI | $560 | Uncontrolled Resource Consumption | 17up
+- [User input validation can lead to DOS](https://hackerone.com/reports/767458) -- X / xAI | $560 | Uncontrolled Resource Consumption | 13up
+- [Pre-auth Denial-of-Service in Dovecot RPA implementation](https://hackerone.com/reports/866605) -- Open-Xchange | $550 | Denial of Service | 11up
+- [[CVE-2024-47888] Possible ReDoS vulnerability in plain_text_for_blockquote_node in Action Text](https://hackerone.com/reports/2792776) -- Internet Bug Bounty | $505 | Uncontrolled Resource Consumption | 60up
+- [CVE-2024-43398: DoS vulnerability in REXML](https://hackerone.com/reports/3002543) -- Internet Bug Bounty | $505 | Uncontrolled Resource Consumption | 45up

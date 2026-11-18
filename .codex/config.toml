@@ -1,0 +1,12 @@
+# Project-scoped MCP config for Codex CLI and supported Codex clients.
+# Keep shell networking disabled; browser access is provided by Playwright MCP.
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 4
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp", "--browser", "chromium", "--no-sandbox"]
+startup_timeout_sec = 30
+tool_timeout_sec = 120

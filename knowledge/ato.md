@@ -1,0 +1,104 @@
+# Account Takeover -- Top 100 reportes H1
+
+_Generado el 2026-10-30 | Ordenado por bounty/upvotes_
+
+- [[Pre-Submission][H1-4420-2019] API access to Phabricator on code.uberinternal.com from leaked certificate in git repo](https://hackerone.com/reports/591813) -- Uber | $40,000 | Insecure Storage of Sensitive Information | 455up
+- [Account Takeover via Password Reset without user interactions](https://hackerone.com/reports/2293343) -- GitLab | $35,000 | Improper Access Control - Generic | 984up
+- [RCE via the DecompressedArchiveSizeValidator and Project BulkImports (behind feature flag)](https://hackerone.com/reports/1609965) -- GitLab | $33,510 | Command Injection - Generic | 386up
+- [Account takeover via leaked session cookie](https://hackerone.com/reports/745324) -- HackerOne | $20,000 | Insufficiently Protected Credentials | 1642up
+- [An attacker can can view any hacker email via  /SaveCollaboratorsMutation operation name](https://hackerone.com/reports/2032716) -- HackerOne | $12,500 | Information Disclosure | 428up
+- [Spring Actuator endpoints publicly available and broken authentication](https://hackerone.com/reports/838635) -- LY Corporation | $12,500 | Misconfiguration | 234up
+- [Account Takeover via Authentication Bypass in TikTok Account Recovery](https://hackerone.com/reports/2443228) -- TikTok | $12,000 | Authentication Bypass Using an Alternate Path or Channel | 172up
+- [Ability to DOS any organization's SSO and open up the door to account takeovers](https://hackerone.com/reports/976603) -- Superhuman (formerly Grammarly) | $10,500 | Improper Authentication - Generic | 259up
+- [password reset token leaking allowed for ATO of an Uber account](https://hackerone.com/reports/173551) -- Uber | $10,000 | Improper Authentication - Generic | 100up
+- [[CRITICAL] -- Complete Account Takeover](https://hackerone.com/reports/136885) -- Uber | $8,000 | Improper Authentication - Generic | 88up
+- [Account Takeover via billing](https://hackerone.com/reports/394329) -- Chaturbate | $8,000 | Improper Authorization | 55up
+- [Spring Actuator endpoints publicly available, leading to account takeover](https://hackerone.com/reports/862589) -- LY Corporation | $5,000 | Misconfiguration | 143up
+- [Access Grab_Road BigData Database via Open Presto coordinator](https://hackerone.com/reports/266766) -- Grab | $5,000 | Information Disclosure | 97up
+- [[www.zomato.com] SQLi - /php/██████████ - item_id](https://hackerone.com/reports/403616) -- Eternal | $4,500 | SQL Injection | 326up
+- [SSRF in Functional Administrative Support Tool pdf generator (████) [HtUS]](https://hackerone.com/reports/1628209) -- U.S. Dept Of Defense | $4,000 | Server-Side Request Forgery (SSRF) | 46up
+- [Use of Cryptographically Weak Pseudo-Random Number Generator in WebCrypto keygen](https://hackerone.com/reports/1888803) -- Internet Bug Bounty | $4,000 | 18up
+- [Account TakeOver through password recovery at am.ru](https://hackerone.com/reports/730067) -- Mail.ru | $3,000 | Improper Restriction of Authentication Attempts | 139up
+- [Stored XSS on auth.uber.com/oauth/v2/authorize via redirect_uri parameter leads to Account Takeover](https://hackerone.com/reports/397497) -- Uber | $3,000 | Cross-site Scripting (XSS) - Stored | 52up
+- [[help.steampowered.com] Account takeover bruteforcing SteamGuard](https://hackerone.com/reports/407971) -- Valve | $2,500 | Business Logic Errors | 112up
+- [Bypass validation parts in AWS IAM Authenticator for Kubernetes](https://hackerone.com/reports/1580493) -- Kubernetes | $2,500 | Improper Authentication - Generic | 68up
+- [Account takeover due to insufficient URL validation on RelayState parameter](https://hackerone.com/reports/1923672) -- GitLab | $2,450 | Cross-Site Request Forgery (CSRF) | 98up
+- [Cross-site scripting on algorithm collaborator](https://hackerone.com/reports/615672) -- Quantopian | $2,100 | Cross-site Scripting (XSS) - Stored | 37up
+- [Account Takeover via Email ID Change and Forgot Password Functionality](https://hackerone.com/reports/1089467) -- New Relic | $2,048 | Improper Authentication - Generic | 214up
+- [Account Takeover at vseapteki.ru](https://hackerone.com/reports/707231) -- Mail.ru | $2,000 | Improper Restriction of Authentication Attempts | 142up
+- [Availing Zomato gold by using a random third-party `wallet_id`](https://hackerone.com/reports/938021) -- Eternal | $2,000 | Business Logic Errors | 116up
+- [[www.zomato.com] Blind SQL Injection in /php/geto2banner](https://hackerone.com/reports/838855) -- Eternal | $2,000 | SQL Injection | 68up
+- [[SSRF] Server-Side Request Forgery at https://sea-web.gold.razer.com/dev/simulator via notify_url Parameter](https://hackerone.com/reports/777664) -- Razer | $2,000 | Server-Side Request Forgery (SSRF) | 60up
+- [[www.zomato.com] Blind SQL Injection in /php/widgets_handler.php](https://hackerone.com/reports/836079) -- Eternal | $2,000 | SQL Injection | 54up
+- [Possible to make restricted files public on Phabricator via Diffusion](https://hackerone.com/reports/1560717) -- Phabricator | $2,000 | Improper Access Control - Generic | 17up
+- [Adobe Flash Player OpportunityGenerator class Memory Corruption Vulnerability](https://hackerone.com/reports/138518) -- Internet Bug Bounty | $2,000 | Memory Corruption - Generic | 2up
+- [Adobe Flash Player ShimOpportunityGenerator class Memory Corruption Vulnerability](https://hackerone.com/reports/145269) -- Internet Bug Bounty | $2,000 | Memory Corruption - Generic | 1up
+- [Collaborators and Staff members without all necessary permissions are able to create, edit and install custom apps](https://hackerone.com/reports/1555502) -- Shopify | $1,900 | Improper Access Control - Generic | 46up
+- [CodeQL query to detect open Spring Boot actuator endpoints](https://hackerone.com/reports/891266) -- GitHub Security Lab | $1,800 | 8up
+- [ihsinme: CPP Add query for CWE-783 Operator Precedence Logic Error When Use Bool Type](https://hackerone.com/reports/1241578) -- GitHub Security Lab | $1,800 | 5up
+- [Account Takeover worki.ru](https://hackerone.com/reports/744662) -- Mail.ru | $1,700 | Improper Restriction of Authentication Attempts | 391up
+- [Account TakeOver at my.33slona.ru](https://hackerone.com/reports/773519) -- Mail.ru | $1,700 | Improper Restriction of Authentication Attempts | 359up
+- [Stored XSS in Dovetale by application of creator](https://hackerone.com/reports/1652046) -- Shopify | $1,600 | Cross-site Scripting (XSS) - Stored | 34up
+- [Account Takeover at worki.ru](https://hackerone.com/reports/725707) -- Mail.ru | $1,500 | Violation of Secure Design Principles | 143up
+- [DOS validator nodes of blockchain to block external connections](https://hackerone.com/reports/1695472) -- Linux Foundation Decentralized Trust | $1,500 | Uncontrolled Resource Consumption | 20up
+- [Account takeover at geekbrains.ru](https://hackerone.com/reports/761655) -- Mail.ru | $1,500 | Violation of Secure Design Principles | 15up
+- [Chaining Bugs: Leakage of CSRF token which leads to Stored XSS and Account Takeover (xs1.tribalwars.cash)](https://hackerone.com/reports/604120) -- InnoGames | $1,100 | Insecure Storage of Sensitive Information | 186up
+- [HTML injection possible with soft email confirmations when Administrator manually confirms attacker email address](https://hackerone.com/reports/1935628) -- GitLab | $1,060 | Resource Injection | 61up
+- [[https://reviews.zomato.com] Time Based SQL Injection](https://hackerone.com/reports/300176) -- Eternal | $1,000 | SQL Injection | 72up
+- [[www.zomato.com] SQLi on `order_id` parameter](https://hackerone.com/reports/358669) -- Eternal | $1,000 | SQL Injection | 63up
+- [[www.zomato.com] Union SQLi + Waf Bypass](https://hackerone.com/reports/258582) -- Eternal | $1,000 | SQL Injection | 61up
+- [Administrator access to a Django Administration Panel on *.sc-corp.net via bruteforced credentials](https://hackerone.com/reports/128114) -- Snapchat | $1,000 | Improper Authentication - Generic | 54up
+- [CreatorID leaked from public content posted to SnapMaps](https://hackerone.com/reports/867521) -- Snapchat | $1,000 | Server-Side Request Forgery (SSRF) | 49up
+- [Improper access control on easytopup.in.th transaction page leads to user's information disclosure and may lead to account hijacking](https://hackerone.com/reports/776877) -- Razer | $1,000 | Improper Access Control - Generic | 41up
+- [[www.zomato.com] Boolean SQLi - /█████.php](https://hackerone.com/reports/297534) -- Eternal | $1,000 | SQL Injection | 41up
+- [[www.zomato.com] Boolean SQLi - /███████.php](https://hackerone.com/reports/301257) -- Eternal | $1,000 | SQL Injection | 35up
+- [Account Takeover on https://www.delivery-club.ru через партнерский аккаунт.](https://hackerone.com/reports/324230) -- Mail.ru | $1,000 | Improper Authentication - Generic | 22up
+- [Account takeover via Pornhub Oauth](https://hackerone.com/reports/192648) -- Pornhub | $1,000 | Improper Authentication - Generic | 17up
+- [Account hijack via deleted PH account](https://hackerone.com/reports/201940) -- Pornhub | $1,000 | Improper Authentication - Generic | 13up
+- [Account Takeover Vulnerability in Shopify Collabs Platform Due to Missing Email Verification](https://hackerone.com/reports/1679734) -- Shopify | $800 | 111up
+- [Чтение файлов на сервере и раскрытие директорий mediator.media](https://hackerone.com/reports/411466) -- Mail.ru | $800 | Server-Side Request Forgery (SSRF) | 6up
+- [Reflected XSS at https://pay.gold.razer.com escalated to account takeover](https://hackerone.com/reports/723060) -- Razer | $750 | Cross-site Scripting (XSS) - Reflected | 287up
+- [[www.zomato.com] Blind XSS on one of the Admin Dashboard](https://hackerone.com/reports/724889) -- Eternal | $750 | Cross-site Scripting (XSS) - Generic | 221up
+- [[Zomato Order] Insecure deeplink leads to sensitive information disclosure](https://hackerone.com/reports/532225) -- Eternal | $750 | 113up
+- [Improper Authentication inside the Rockstar Games Launcher which leads to Account takeover to some extend](https://hackerone.com/reports/1442783) -- Rockstar Games | $750 | Improper Authentication - Generic | 51up
+- [Phabricator is vulnerable to padding oracle attacks and chosen-ciphertext attacks.](https://hackerone.com/reports/216746) -- Phabricator | $750 | Missing Required Cryptographic Step | 23up
+- [Upgrade menu exposes the mobile application token meant to only be visible to administrators](https://hackerone.com/reports/447975) -- New Relic | $750 | Privilege Escalation | 11up
+- [Abusing VCS control on phabricator](https://hackerone.com/reports/16315) -- Phabricator | $600 | Privilege Escalation | 1up
+- [[www.zomato.com] CORS Misconfiguration, could lead to disclosure of sensitive information](https://hackerone.com/reports/426165) -- Eternal | $550 | 246up
+- [[www.zomato.com] Blind XSS in one of the admin dashboard](https://hackerone.com/reports/461272) -- Eternal | $500 | Cross-site Scripting (XSS) - Generic | 102up
+- [Full Account Takeover In ****.ru](https://hackerone.com/reports/1078479) -- Mail.ru | $500 | Authentication Bypass Using an Alternate Path or Channel | 35up
+- [Deleting other people's comments on ModeratorMessages](https://hackerone.com/reports/357952) -- Valve | $500 | Improper Authentication - Generic | 25up
+- [Invalid Phabricator API token revealed through error message when escalating a report](https://hackerone.com/reports/335123) -- HackerOne | $500 | Information Exposure Through an Error Message | 18up
+- [CSRF to ATO at https://█████/user/account [HtUS]](https://hackerone.com/reports/1624421) -- U.S. Dept Of Defense | $500 | Cross-Site Request Forgery (CSRF) | 16up
+- [Partner Account Takeover on https://www.delivery-club.ru через пользовательский аккаунт.](https://hackerone.com/reports/330760) -- Mail.ru | $500 | Improper Authentication - Generic | 14up
+- [[Java] CWE-016: Query to detect insecure configuration of Spring Boot Actuator](https://hackerone.com/reports/1137966) -- GitHub Security Lab | $500 | 12up
+- [Возможность залить шелл на https://widget.operator.mail.ru](https://hackerone.com/reports/304545) -- Mail.ru | $500 | Code Injection | 12up
+- [An administrator without any permission is able to get order notifications using his APNS Token.](https://hackerone.com/reports/100938) -- Shopify | $500 | Improper Authentication - Generic | 10up
+- [Full Account Takeover Student Account In https://********.ru/signin/main/student/email](https://hackerone.com/reports/1079275) -- Mail.ru | $500 | Authentication Bypass Using an Alternate Path or Channel | 9up
+- [Staff members with no permission can access to the files, uploaded by the administrator](https://hackerone.com/reports/97452) -- Shopify | $500 | Privilege Escalation | 7up
+- [An administrator without the 'Settings' permission is able to see payment gateways](https://hackerone.com/reports/96908) -- Shopify | $500 | Improper Authentication - Generic | 5up
+- [mrgs.my.games account takeover](https://hackerone.com/reports/999314) -- Mail.ru | $500 | Improper Access Control - Generic | 4up
+- [A 'Full access' administrator is able to see the shop owners user details](https://hackerone.com/reports/96890) -- Shopify | $500 | Privilege Escalation | 3up
+- [Phabricator Phame Blog Skins Local File Inclusion](https://hackerone.com/reports/39428) -- Phabricator | $500 | Code Injection | 2up
+- [CachingIterator null dereference when convert to string](https://hackerone.com/reports/176226) -- Internet Bug Bounty | $500 | Memory Corruption - Generic | 1up
+- [OAuth access_token stealing in Phabricator](https://hackerone.com/reports/3596) -- Phabricator | $450 | Open Redirect | 9up
+- [Mystery with a leaked token and Reusability of email confirmation link leading to Account Takeover](https://hackerone.com/reports/1817214) -- Sorare | $300 | Inadequate Encryption Strength | 49up
+- [Account takeover by using  abandoned email id of victim which has already been changed to new  by victim himself on one.newrelic.com](https://hackerone.com/reports/1021232) -- New Relic | $300 | Improper Authentication - Generic | 38up
+- [[www.zomato.com] Privilege Escalation - Control reviews - /████dashboard_handler.php](https://hackerone.com/reports/300099) -- Eternal | $300 | Privilege Escalation | 18up
+- [Global default settings page is accessible to non-administrators](https://hackerone.com/reports/1563139) -- Phabricator | $300 | Improper Access Control - Generic | 10up
+- [Phabricator Diffusion application allows unauthorized users to delete mirrors](https://hackerone.com/reports/38965) -- Phabricator | $300 | Improper Authentication - Generic | 3up
+- [A non-administrator user can change his email even when it is restricted by an administrator](https://hackerone.com/reports/805943) -- Visma Public | $250 | Privilege Escalation | 124up
+- [Mail contact autocomplete bypasses administrator-configured user enumeration restrictions and expose member information outside the intended scope](https://hackerone.com/reports/3617729) -- Nextcloud | $250 | Privacy Violation | 98up
+- [CSV export/import functionality allows administrators to modify member and message content of a workspace](https://hackerone.com/reports/1661310) -- Slack | $250 | Privilege Escalation | 11up
+- [clickjacing can lead to account takeover](https://hackerone.com/reports/2119892) -- pixiv | $200 | UI Redressing (Clickjacking) | 70up
+- [Read-only administrator can change agent update settings](https://hackerone.com/reports/1538004) -- Acronis | $200 | Improper Access Control - Generic | 29up
+- [[www.zomato.com] Privilege Escalation - /php/restaurant_menus_handler.php](https://hackerone.com/reports/300454) -- Eternal | $200 | Privilege Escalation | 26up
+- [Moderator user has access to owner's support portal and tickets](https://hackerone.com/reports/1071918) -- Logitech | $200 | Improper Access Control - Generic | 19up
+- [Account TakeOver at kvartira.city-mobil.ru](https://hackerone.com/reports/1004360) -- Mail.ru | $150 | Improper Restriction of Authentication Attempts | 18up
+- [[api.zomato.com] Abusing LocalParams (city_id) to Inject SOLR query](https://hackerone.com/reports/953203) -- Eternal | $150 | Failure to Sanitize Special Elements into a Different Plane (Special Element Injection) | 8up
+- [Mail auto configurator can be tricked into sending account information to wrong servers](https://hackerone.com/reports/2508422) -- Nextcloud | $100 | Information Disclosure | 34up
+- [Reflected XSS on developers.zomato.com](https://hackerone.com/reports/418823) -- Eternal | $100 | Cross-site Scripting (XSS) - Reflected | 23up
+- [[www.zomato.com] IDOR - Gold Subscription Details, Able to view "Membership ID" and "Validity Details" of other Users](https://hackerone.com/reports/344145) -- Eternal | $100 | Insecure Direct Object Reference (IDOR) | 21up
+- [Moderators can send messages to users from banned subreddits via `oauth.reddit.com/api/mod/conversations`](https://hackerone.com/reports/1543770) -- Reddit | $100 | Improper Input Validation | 19up
+- [Bypass of the SSRF protection (Slack commands, Phabricator integration)](https://hackerone.com/reports/61312) -- Slack | $100 | 14up
+- [Zomato.com Reflected Cross Site Scripting](https://hackerone.com/reports/303522) -- Eternal | $100 | Cross-site Scripting (XSS) - Reflected | 13up

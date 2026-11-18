@@ -1,0 +1,23 @@
+{
+  "target": "https://app.example.test",
+  "scope": ["app.example.test"],
+  "lead_id": "L01",
+  "vulnerability_class": "XSS",
+  "affected_asset": "https://app.example.test/search?q=example",
+  "actor": "unauthenticated user",
+  "resource": "search response",
+  "operation": "render query parameter",
+  "hypothesis": "The query value may reach an executable HTML context.",
+  "observations": ["Describe the observed source and sink; separate inference from proof."],
+  "evidence": [],
+  "confidence": "low",
+  "impact": {
+    "demonstrated": false,
+    "description": "Not yet demonstrated."
+  },
+  "reproduction_status": "NOT_TESTED",
+  "severity_proposal": "Informational",
+  "disproof_attempts": [],
+  "status": "CANDIDATE",
+  "next_action": "Capture baseline, bounded reproduction, and observable impact."
+}
