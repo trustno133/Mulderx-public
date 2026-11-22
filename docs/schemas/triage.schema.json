@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mulderx.local/schemas/triage.schema.json",
+  "title": "Mulderx structured triage output",
+  "type": "object",
+  "required": ["schema_version", "vectors", "business_logic_candidates", "discarded", "blockers"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "vectors": { "type": "array", "items": { "$ref": "#/$defs/vector" } },
+    "business_logic_candidates": { "type": "array", "items": { "$ref": "#/$defs/vector" } },
+    "discarded": { "type": "array", "items": { "$ref": "#/$defs/discarded" } },
+    "blockers": { "type": "array", "items": { "$ref": "#/$defs/blocker" } }
+  },
+  "$defs": {
+    "vector": {
+      "type": "object",
+      "required": ["id", "status", "vulnerability_class", "endpoint_or_signal", "source", "priority", "reason", "next_step"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^T[0-9]{1,4}$" },
+        "status": { "enum": ["CANDIDATE", "NEEDS_OPERATOR"] },
+        "vulnerability_class": { "type": "string", "minLength": 1 },
+        "endpoint_or_signal": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 },
+        "priority": { "enum": ["P1", "P2", "P3"] },
+        "reason": { "type": "string", "minLength": 1 },
+        "next_step": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "discarded": {
+      "type": "object",
+      "required": ["source", "signal", "counterevidence", "reason"],
+      "properties": {
+        "source": { "type": "string", "minLength": 1 },
+        "signal": { "type": "string", "minLength": 1 },
+        "counterevidence": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "blocker": {
+      "type": "object",
+      "required": ["source", "signal", "reason", "next_action"],
+      "properties": {
+        "source": { "type": "string", "minLength": 1 },
+        "signal": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "next_action": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

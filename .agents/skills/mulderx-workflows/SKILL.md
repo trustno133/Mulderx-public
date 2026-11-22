@@ -17,7 +17,7 @@ Use this skill as a small index, not as permission to read the entire documentat
 | Information disclosure | `info-disclosure` | Private data, diagnostics, source or configuration exposure beyond credential leaks |
 | Race condition | `race-condition` | Concrete non-idempotent workflow or check/use concurrency signal |
 | Remote code execution | `rce` | Command/code execution lead outside narrower SSTI/deserialization/upload routes |
-| Static source review | `sast-methodology` | Authorized supplied source code, staged map/trace/adversarial review |
+| Static source review | `sast-methodology`; add `js-static-analysis` for JavaScript | Authorized supplied source code, staged map/trace/adversarial review; for JS, map application flows and concrete client-side leads |
 | GraphQL API audit | `graphql-audit` | Resolver/field authorization and bounded protocol-specific review on an observed endpoint |
 | Smart-contract review | `web3-audit` | Authorized source-level Web3/DeFi review; live chain interaction remains separately gated |
 | WAF/CDN profile | `waf-profiler` + `waf_profiler_specialist` | Observed WAF behavior on an in-scope host; no challenge solving or control evasion |
@@ -35,6 +35,7 @@ Use this skill as a small index, not as permission to read the entire documentat
 | Prototype pollution | `prototype-pollution` | Structured input or JavaScript merge reaches prototype-sensitive code |
 | SAML authentication bypass | `saml-auth-bypass` | SAMLResponse, ACS, assertion, or XML signature validation signal |
 | WebSocket message impact | `websocket-rce` | Authenticated WebSocket messages trigger privileged server-side actions |
+| Broad vulnerability coverage | `multi-vuln-coverage` | New or broad target/surface; map observed features to relevant classes, prioritize coverage, then route evidence-backed leads |
 | Hunting methodology | `hunting-methodology` | Wide/deep route selection, prioritization, coverage, sibling rule, timeboxing and closure |
 | HexBrain prior art | `hexbrain` | Use public bug bounty reports, feature-based test plans, bypass references or CVE checks to sharpen a concrete lead |
 | Vulnerability classes | `vuln-classes` | Classify a signal and route it to the relevant specialized playbook |
@@ -63,7 +64,7 @@ Use this skill as a small index, not as permission to read the entire documentat
 | Wayback JavaScript recon | `wayback-js-recon` | Historical JavaScript surface requested or indicated |
 | Web storage | `web-storage` | Auth/session/PII in localStorage or sessionStorage, often chained with XSS |
 | XSS | Use the dedicated `xss-hunt` skill (classifies, then delegates to `xss-reflected`/`xss-stored`/`xss-dom`/`xss-blind`) | Reflected, stored, DOM, blind XSS; payload synthesis; evidenced filter/WAF behavior |
-| WAF bypass (nested XSS guide) | `.claude/skills/xss/references/wafbypass/SKILL.md` | Only after an in-scope WAF block is observed; load after `xss-hunt` |
+| WAF signal during XSS triage | `waf-profiler` | Profile observed behavior; stop at CAPTCHA, challenge, rate limit, ban, or degradation; do not evade controls |
 
 ## Agent instruction files
 
@@ -81,6 +82,7 @@ Follow root `AGENTS.md`, the user's scope, and the selected canonical skill. Tre
 
 ## Pipeline operation pitfalls
 
-- **triage.md format for `hermes_swarm.sh` gating**: The `mulderx_metrics.py` gate for the `hunters` stage counts rows in pipe-delimited tables inside sections named exactly `## Vectores client-side priorizados` and `## Vectores server-side (para después de client-side)`. It does NOT count `**Estado:** CANDIDATO` lines (that regex is in `count_lead_states` which feeds the `judge` gate, not the `hunters` gate). If the triage uses any other section headers or format, the gate returns `triage_candidates: 0` and `hermes_swarm.sh` refuses to create hunter tasks. Always use those exact section headers with table rows for actionable vectors.
+- **Structured Triage is the hunter gate input**: `mulderx_metrics.py` reads `triage.json` and counts valid entries in `vectors` whose status is `CANDIDATE`. Triage also writes `triage.md` for people. Older workspaces without `triage.json` use the Markdown tables as a compatibility fallback. An invalid JSON contract or unrecognized legacy headings blocks dispatch and reports the parse reason; it must not be treated as a clean sweep.
+- **Disposition**: A candidate that was not tested because of missing authorization, access, account, data, or a service challenge stays `CANDIDATE`/`SETUP-PENDIENTE` and is recorded as `BLOCKED`/`INSUFFICIENT` in the structured store. Only an executed test with counterevidence can close it as `DISCARDED`/`MUERTO`.
 - **`hermes kanban dispatch` is blocking**: It runs until all tasks complete. Always launch it with `terminal(background=true, notify=true)` or in a separate shell. Monitoring with `hermes kanban --board <b> ls` in another call while dispatch runs.
 - **Dashboard live monitoring**: `hermes dashboard` runs on port 9119 (`http://localhost:9119`). The operator can watch hunters work in real-time there. Also: `hermes kanban --board <b> tail <task_id>` streams a single task's output live in terminal.

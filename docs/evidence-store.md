@@ -16,6 +16,18 @@ de entrada debe estar dentro del workspace. `create` fuerza el estado inicial
 `CANDIDATE` y una historia vacía; no admite crear directamente un confirmado.
 Use IDs `L01`, `L02`, etc. sin repetirlos.
 
+Un lead no probado sigue como `CANDIDATE`; durante una validación autorizada,
+usa `TESTING`. Reserva `DISCARDED` para una hipótesis refutada por evidencia
+de una prueba ejecutada. Si faltan autorización, acceso, cuenta o datos, usa
+`BLOCKED`; si la prueba quedó inconclusa, usa `INSUFFICIENT`. Para candidatos,
+guarda en `leads.md` una PoC propuesta o pasos de reproducción y marca
+`NO EJECUTADA` hasta observar el resultado en el target.
+
+La transición a `DISCARDED` se rechaza si no hay `NOT_REPRODUCIBLE`, un intento
+de refutación con `action` y `result`, y un recibo de evidencia `disproof`.
+La validación general sigue aceptando recibos históricos; no los migra ni los
+reescribe automáticamente.
+
 ## Añadir evidencia y completar la validación
 
 Guarde evidencia local en el workspace, sin cookies, tokens ni claves. Registre

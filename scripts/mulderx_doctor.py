@@ -7,6 +7,7 @@ import argparse
 import importlib.util
 import json
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -21,6 +22,7 @@ REQUIRED_FILES = (
     "scripts/scope_policy.py", "scripts/file_lock.py", "scripts/evidence_store.py",
     "scripts/research_memory.py", "scripts/benchmark_taint_tracker.py",
     "requirements.txt", "docs/evidence-store.md", "docs/schemas/finding.schema.json",
+    "docs/schemas/triage.schema.json",
 )
 REQUIRED_MODULES = {"requests": "requests", "bs4": "beautifulsoup4", "lxml": "lxml"}
 OPTIONAL_MODULES = {
@@ -31,8 +33,14 @@ OPTIONAL_MODULES = {
 OPTIONAL_TOOLS = (
     "git", "bash", "node", "npm", "npx", "claude", "codex", "opencode",
     "hermes", "subfinder", "assetfinder", "findomain", "dnsx", "httpx",
-    "katana", "subzy", "ffuf", "nuclei",
+    "katana", "subzy", "ffuf", "nuclei", "arjun", "x8",
+    "github-subdomains", "chaos",
 )
+WSL_FALLBACK_TOOLS = frozenset({
+    "git", "bash", "subfinder", "assetfinder", "findomain", "dnsx", "httpx",
+    "katana", "subzy", "ffuf", "nuclei", "arjun", "x8",
+    "github-subdomains", "chaos",
+})
 
 
 def _check(name: str, status: str, detail: str, *, required: bool = False) -> dict[str, Any]:
@@ -56,6 +64,65 @@ def _run_read_only_check(script: Path) -> dict[str, Any]:
         detail[-1][:240] if detail else f"exit={result.returncode}",
         required=True,
     )
+
+
+def _find_wsl_tool(command: str) -> str | None:
+    """Find a Linux CLI in WSL when Mulderx is running from Windows."""
+    wsl = shutil.which("wsl.exe")
+    if os.name != "nt" or not wsl or command not in WSL_FALLBACK_TOOLS:
+        return None
+    try:
+        result = subprocess.run(
+            [wsl, "-e", "bash", "-lc", f"command -v {shlex.quote(command)}"],
+            capture_output=True, text=True, timeout=8, check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    if result.returncode == 0:
+        return result.stdout.strip().splitlines()[0] if result.stdout.strip() else None
+    return None
+
+
+def _find_wsl_seclists() -> str | None:
+    """Check for the small SecLists files used by parameter/path discovery."""
+    wsl = shutil.which("wsl.exe")
+    if os.name != "nt" or not wsl:
+        return None
+    probe = (
+        'base="${SECLISTS_PATH:-}"; '
+        '[ -n "$base" ] && '
+        '[ -f "$base/Discovery/Web-Content/burp-parameter-names.txt" ] && '
+        '[ -f "$base/Discovery/Web-Content/common.txt" ] && printf "%s" "$base"'
+    )
+    try:
+        result = subprocess.run(
+            [wsl, "-e", "bash", "-lc", probe],
+            capture_output=True, text=True, timeout=8, check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    return result.stdout.strip() if result.returncode == 0 and result.stdout.strip() else None
+
+
+def _find_wsl_mulderx_python() -> str | None:
+    """Check the WSL virtualenv used by the Windows-to-WSL recon workflow."""
+    wsl = shutil.which("wsl.exe")
+    if os.name != "nt" or not wsl:
+        return None
+    probe = (
+        'python="$HOME/.local/share/mulderx/venvs/mulderx/bin/python"; '
+        '[ -x "$python" ] && '
+        '"$python" -c "import requests, bs4, lxml, networkx, tree_sitter, tree_sitter_javascript" '
+        '&& printf "%s" "$python"'
+    )
+    try:
+        result = subprocess.run(
+            [wsl, "-e", "bash", "-lc", probe],
+            capture_output=True, text=True, timeout=12, check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    return result.stdout.strip() if result.returncode == 0 and result.stdout.strip() else None
 
 
 def collect_report(root: Path = ROOT) -> dict[str, Any]:
@@ -115,9 +182,34 @@ def collect_report(root: Path = ROOT) -> dict[str, Any]:
 
     for command in OPTIONAL_TOOLS:
         executable = shutil.which(command)
-        status = "OK" if executable else "WARN"
-        detail = executable or "no está en PATH (puede ser opcional o vivir en WSL)"
+        wsl_executable = None if executable else _find_wsl_tool(command)
+        status = "OK" if executable or wsl_executable else "WARN"
+        detail = executable or (
+            f"WSL: {wsl_executable} (usar WSL para scripts Bash)" if wsl_executable
+            else "no está en PATH de Windows ni WSL (puede ser opcional)"
+        )
         checks.append(_check(f"tool:{command}", status, detail))
+
+    seclists_path = os.environ.get("SECLISTS_PATH")
+    if seclists_path:
+        seclists_ready = all(
+            (Path(seclists_path) / "Discovery" / "Web-Content" / name).is_file()
+            for name in ("burp-parameter-names.txt", "common.txt")
+        )
+    else:
+        seclists_path = _find_wsl_seclists()
+        seclists_ready = bool(seclists_path)
+    checks.append(_check(
+        "wordlists:SecLists-Web-Content",
+        "OK" if seclists_ready else "WARN",
+        str(seclists_path) if seclists_ready else "no configuradas; las skills de parámetros/rutas necesitan listas para x8/ffuf",
+    ))
+    wsl_python = _find_wsl_mulderx_python()
+    checks.append(_check(
+        "python:Mulderx-WSL",
+        "OK" if wsl_python else "WARN",
+        wsl_python or "faltan el venv y sus dependencias; instala con scripts/install_recon_tools_wsl.sh",
+    ))
 
     if os.name == "nt" and shutil.which("wsl.exe") and not shutil.which("hermes"):
         checks.append(_check("tool:hermes-wsl", "WARN", "WSL existe; no se inspeccionó ni ejecutó el perfil Hermes externo."))

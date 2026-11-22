@@ -23,7 +23,7 @@ Invocación sugerida en Codex: `Usá xss_specialist y la skill xss-hunt. Analiz�
 
 ## Skills y especialistas para Claude Code y Codex
 
-El flujo previsto es Mulderx como coordinador y un subagente por lead accionable, elegido por vulnerabilidad. Cada subagente carga su skill canónica y devuelve evidencia y estado al coordinador; las skills de metodología, recon y reporting no necesitan agentes propios. Hay 57 entradas Codex de skills y 44 especialistas en cada proveedor. Codex usa `.codex/agents/*.toml`; Claude usa `.claude/agents/*.md` (34 generados desde el registro compartido y 10 mantenidos a mano). Claude Code debe iniciarse desde el proyecto para descubrir sus archivos locales; la carga real requiere tener Claude Code instalado y autenticado.
+El flujo previsto es Mulderx como coordinador y un subagente por lead accionable, elegido por vulnerabilidad. Cada subagente carga su skill canónica y devuelve evidencia y estado al coordinador; las skills de metodología, recon y reporting no necesitan agentes propios. Hay 57 playbooks Codex más el router (58 entradas) y 44 especialistas por proveedor; Claude mantiene además 3 asistentes auxiliares. Codex usa `.codex/agents/*.toml`; Claude usa `.claude/agents/*.md` (34 generados desde el registro compartido y 10 mantenidos a mano). Claude Code debe iniciarse desde el proyecto para descubrir sus archivos locales; la carga real requiere tener Claude Code instalado y autenticado.
 
 Los especialistas Codex se actualizan y comprueban con `python scripts/sync_codex_agents.py [--check]`. Los equivalentes Claude se actualizan y comprueban con `python scripts/sync_claude_agents.py [--check]`; ese generador preserva los agentes escritos a mano. El registro y ruteo comunes están en `scripts/sync_codex_agents.py` y `AGENTS.md`. Los subagentes generados de Codex heredan el modelo principal y usan reasoning alto. Para preguntas conceptuales o leads sin evidencia accionable, no delegar una prueba.
 
@@ -48,6 +48,11 @@ candidatos; después crea Ocelot solo si hay leads `CONFIRMADO` con recibos
 estructurados válidos en `findings.json`; finalmente crea Scully solo si
 Ocelot aprobó findings y el store valida como `APPROVED`. Re-testear si una actualización de
 Hermes dice haber tocado `kanban swarm`.
+
+El gate de hunters toma `triage.json` como fuente estructurada y mantiene
+`triage.md` para lectura humana. Los workspaces anteriores pueden usar las
+tablas Markdown como fallback; el resultado del gate incluye conteos de
+candidatos, bloqueos y errores de formato.
 
 ## Política de datos
 

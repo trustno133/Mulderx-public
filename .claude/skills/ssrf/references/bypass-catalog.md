@@ -15,6 +15,16 @@ nombrar el programa, la empresa, ni paths/IDs específicos de ese
 target (igual criterio que credenciales: eso vive únicamente en
 `targets/<target>/`).
 
+## Registro de evidencia y límites
+
+Usa este catálogo solo ante una funcionalidad que realmente obtenga o procese
+una URL y con autorización para el endpoint. Cambia una característica del
+parser o la normalización por solicitud; registra el valor sanitizado, status,
+resumen de respuesta y latencia. Detén esa vía ante challenge, rate limit, ban,
+degradación o errores 5xx sostenidos. Un timeout parecido no identifica por sí
+solo si el control fue de la aplicación, DNS, red o servidor: separa observación
+de inferencia y no repitas solicitudes para superar un bloqueo.
+
 ## Blacklist de host/path case-sensitive vs. componente que resuelve la URL de forma case-insensitive — `confirmado`
 
 **Contexto de confirmación**: PortSwigger Academy, lab "SSRF with

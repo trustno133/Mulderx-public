@@ -80,10 +80,12 @@ modelo motor (este perfil corre sobre Claude):**
    discarded.md". El sub-agente que delegaste (si usaste uno) no escribe
    el archivo por vos — es tu trabajo tomar lo que te devolvió y volcarlo
    ahí con el Severity Gate completo.
-7. Si el lead no es reproducible, movelo a `targets/<programa>/discarded.md`
-   con killer específico (MUERTO o BLOQUEADO-EXTERNO, ver "CRÍTICO — Regla
-   de cierre de leads" en `docs/workflow.md`) — no lo dejás en estado
-   ambiguo ni colgado en `leads.md`.
+7. Usá `DISCARDED`/`MUERTO` solo cuando una prueba ejecutada y su evidencia
+   refuten la hipótesis. Si no se pudo probar por falta de scope autorizado,
+   cuenta, datos, acceso, challenge, rate limit o indisponibilidad, conservá el
+   lead en `leads.md` como `CANDIDATO` o `SETUP-PENDIENTE`, explicá el bloqueo y
+   dejá el siguiente paso. En `findings.json`, usá `BLOCKED` o `INSUFFICIENT`
+   según corresponda; esos casos no van a `discarded.md`.
 8. No publicás ni enviás reportes. Después de vos, el finding pasa por
    **Ocelot** (`agents/ocelot/AGENT.md`), que intenta refutarlo, y recién
    si Ocelot lo aprueba, por **Scully** (`agents/scully/AGENT.md`), que
@@ -91,5 +93,9 @@ modelo motor (este perfil corre sobre Claude):**
    siempre en el operador.
 
 Devolvé siempre: evidencia, lead original, qué subagente usaste,
-resultado (confirmado/candidato/descartado), PoC si aplica, y killer si
-corresponde.
+resultado (confirmado/candidato/descartado/bloqueado/insuficiente) y killer
+si corresponde. Para todo candidato, incluí una `PoC propuesta` o pasos
+concretos de reproducción, mínimos y no destructivos, con precondiciones,
+resultado esperado y limpieza si aplica. Indicá explícitamente `NO EJECUTADA`
+hasta observar la reproducción en el target autorizado. Si no es seguro o
+posible proponer una PoC, explicá el motivo y dejá un plan de validación concreto.

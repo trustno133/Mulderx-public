@@ -197,6 +197,7 @@ la ejecución. No dejarlo persistiendo — hay gente real viendo eso.
 
 ## Referencias profundas (cargar solo si corresponde)
 
+- `output-mode-reflection.md` - formatos alternativos, impresores/exportadores y ramas de error o fallback. Cargar solo si esa ruta existe; demostrar reachability y ejecución.
 - `vector-catalog.md` + `portswigger-vectors.json` — selección de vectores
   del catálogo PortSwigger a partir del filter map de `filter-probing.md`.
   Cargar solo después de tener ese filter map.

@@ -372,6 +372,24 @@ def transition_finding(workspace: Path, lead_id: str, to_status: str, actor: str
         old_status = finding["status"]
         if to_status not in TRANSITIONS[old_status]:
             raise ValueError(f"Transición no permitida: {old_status} → {to_status}")
+        if to_status == "DISCARDED":
+            attempts = finding.get("disproof_attempts")
+            documented_attempts = isinstance(attempts, list) and any(
+                isinstance(item, dict)
+                and isinstance(item.get("action"), str) and item["action"].strip()
+                and isinstance(item.get("result"), str) and item["result"].strip()
+                for item in attempts
+            )
+            has_disproof_receipt = isinstance(finding.get("evidence"), list) and any(
+                isinstance(item, dict) and item.get("kind") == "disproof"
+                for item in finding["evidence"]
+            )
+            if finding.get("reproduction_status") != "NOT_REPRODUCIBLE":
+                raise ValueError("DISCARDED requiere reproduction_status=NOT_REPRODUCIBLE.")
+            if not documented_attempts:
+                raise ValueError("DISCARDED requiere un intento de refutación con action y result.")
+            if not has_disproof_receipt:
+                raise ValueError("DISCARDED requiere evidencia registrada de tipo disproof.")
         finding["status"] = to_status
         previous_reason = finding.get("status_reason")
         if to_status in {"DISCARDED", "BLOCKED", "INSUFFICIENT"}:

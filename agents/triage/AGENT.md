@@ -205,6 +205,37 @@ Si una sección no tiene nada, escribila igual con "Sin candidatos en
 esta categoría" — mismo criterio que Recon, para que el siguiente
 agente sepa que se revisó.
 
+Además, escribir `targets/<programa>/triage.json` como entrada estructurada
+del gate de hunters. Seguir `docs/schemas/triage.schema.json` y usar este
+formato, incluso cuando las listas estén vacías:
+
+```json
+{
+  "schema_version": 1,
+  "vectors": [],
+  "business_logic_candidates": [],
+  "discarded": [],
+  "blockers": []
+}
+```
+
+Por cada fila en las tablas priorizadas, agregar un objeto a `vectors` con
+`id` (`T01`, `T02`, ...), `status`, `vulnerability_class`,
+`endpoint_or_signal`, `source`, `priority` (`P1`, `P2` o `P3`), `reason` y
+`next_step`. Los IDs deben ser únicos entre `vectors` y
+`business_logic_candidates`. Usá `CANDIDATE` cuando haya una hipótesis concreta que un
+especialista pueda validar; `NEEDS_OPERATOR` cuando falte una cuenta,
+autorización o dato del operador. Si la evidencia observada muestra que la
+señal no aplica, registrala en `discarded` con su contraevidencia. Las dudas
+no son evidencia para descartar.
+
+Los flujos de lógica de negocio van en `business_logic_candidates` con el
+mismo formato. Si una señal queda frenada por falta de acceso, scope ambiguo,
+challenge o datos, agregala a `blockers` con `source`, `signal`, `reason` y
+`next_action`. Solo agregá a `discarded` señales cuya evidencia observada
+refute la hipótesis; incluí `source`, `signal`, `counterevidence` y `reason`.
+No marques como descartada una señal que todavía no se pudo probar.
+
 ---
 
 ## Stop condition

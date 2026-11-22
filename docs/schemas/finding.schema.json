@@ -54,7 +54,17 @@
         "Q3": { "type": "string", "minLength": 1 }
       }
     },
-    "disproof_attempts": { "type": "array" },
+    "disproof_attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["action", "result"],
+        "properties": {
+          "action": { "type": "string", "minLength": 1 },
+          "result": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
     "status": { "enum": ["CANDIDATE", "TESTING", "CONFIRMED", "REVIEWED", "APPROVED", "DISCARDED", "BLOCKED", "INSUFFICIENT"] },
     "status_history": { "type": "array", "items": { "type": "object" } },
     "status_reason": { "type": "string", "minLength": 1 },
@@ -88,6 +98,21 @@
     {
       "if": { "properties": { "status": { "enum": ["DISCARDED", "BLOCKED", "INSUFFICIENT"] } } },
       "then": { "required": ["status_reason"] }
+    },
+    {
+      "if": { "properties": { "status": { "const": "DISCARDED" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "reproduction_status": { "const": "NOT_REPRODUCIBLE" },
+          "disproof_attempts": { "minItems": 1 },
+          "evidence": {
+            "contains": {
+              "properties": { "kind": { "const": "disproof" } },
+              "required": ["kind"]
+            }
+          }
+        }
+      }
     }
   ],
   "additionalProperties": true

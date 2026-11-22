@@ -31,11 +31,15 @@ No se dispara si:
 
 ### Fase 0 — Preparación
 - Verificar que cada target responde antes de fuzzear (evitar perder tiempo en dead endpoints).
+- Confirmar autorización activa para cada endpoint y método, y que el host esté dentro del scope exacto.
+- Detener la vía ante 429, CAPTCHA/challenge, bloqueo, degradación o 5xx sostenidos; no evadir rate limits ni controles del WAF.
 - Si hay `js_params`, guardarlos aparte para el cruce en Fase 2.
+- Usar `MULDERX_PARAM_WORDLIST` para x8; por defecto apunta al archivo `Discovery/Web-Content/burp-parameter-names.txt` bajo `SECLISTS_PATH`.
 
-### Fase 1 — Discovery en paralelo
-- `arjun -u <url> --stable -m GET,POST,JSON` (wordlist propia de Arjun, sin reemplazar).
-- `x8 -u <url> -w <wordlist headers/cookies>` corriendo en paralelo, independiente de Arjun.
+### Fase 1 — Discovery secuencial
+- Primero `arjun -u <url> --stable -m GET,POST,JSON` (wordlist propia de Arjun, sin reemplazar).
+- Ejecutar x8 después, solo si Arjun o el análisis de JS dejan una pregunta concreta: `x8 -u <url> -w "$MULDERX_PARAM_WORDLIST" -W 1 -d 100`.
+- Para descubrir nombres de headers/cookies, usar el modo `--headers` de x8 con el mismo wordlist y un endpoint autorizado.
 - Timeout por target: si excede el límite, marcar `skip - revisar manual` y seguir con el resto del batch (no bloquear todo por un endpoint lento).
 
 ### Fase 2 — Normalización y cruce

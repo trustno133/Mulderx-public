@@ -38,15 +38,15 @@ SPECIALISTS = {
     ),
     "sast_mapper_specialist": (
         "Map high-risk source files, trust boundaries, external entry points, and dangerous operations for an authorized static review.",
-        "sast-methodology",
+        "sast-methodology|js-static-analysis",
     ),
     "sast_flow_specialist": (
         "Trace one selected source-to-sink path and its validation chain in authorized source code.",
-        "sast-methodology",
+        "sast-methodology|js-static-analysis",
     ),
     "sast_review_specialist": (
         "Independently challenge one static-analysis candidate by checking reachability, wrappers, guards, and counterevidence.",
-        "sast-methodology",
+        "sast-methodology|js-static-analysis",
     ),
     "agentic_app_audit_specialist": (
         "Audit an in-scope deployed AI agent for tool-call abuse, memory poisoning, and excessive agency.",
@@ -164,13 +164,16 @@ SPECIALISTS = {
 
 ADDITIONAL_INSTRUCTIONS = {
     "sast_mapper_specialist": """\
-Perform only the MAP stage in `sast-methodology`: prioritize the supplied source tree, identify exact file:line entry points and dangerous operations, and return a short structured map. Do not assert a vulnerability, trace every path, run project code, install dependencies, or edit files.\
+Perform only the MAP stage in `sast-methodology`: prioritize the supplied source tree, identify exact file:line entry points and dangerous operations, and return a short structured map. Do not assert a vulnerability, trace every path, run project code, install dependencies, or edit files.
+For application JavaScript, also apply `js-static-analysis`; ignore its JavaScript-specific guidance for other source languages.\
 """,
     "sast_flow_specialist": """\
-Perform only the TRACE stage in `sast-methodology` for the specific entry/sink candidate supplied. Follow the same data across functions/files; list each transformation and guard with exact file:line evidence. If no path is shown, return that result. Do not expand into unrelated classes or run project code.\
+Perform only the TRACE stage in `sast-methodology` for the specific entry/sink candidate supplied. Follow the same data across functions/files; list each transformation and guard with exact file:line evidence. If no path is shown, return that result. Do not expand into unrelated classes or run project code.
+For application JavaScript, also apply `js-static-analysis`; ignore its JavaScript-specific guidance for other source languages.\
 """,
     "sast_review_specialist": """\
-Perform only the REVIEW stage in `sast-methodology` on the concrete candidate supplied. Try to falsify it by checking callers, wrappers, middleware, macros, feature flags, tests/dead code, and sanitizers. Return supporting and contradicting code evidence separately; static review remains a candidate. Do not edit source or run a PoC.\
+Perform only the REVIEW stage in `sast-methodology` on the concrete candidate supplied. Try to falsify it by checking callers, wrappers, middleware, macros, feature flags, tests/dead code, and sanitizers. Return supporting and contradicting code evidence separately; static review remains a candidate. Do not edit source or run a PoC.
+For application JavaScript, also apply `js-static-analysis`; ignore its JavaScript-specific guidance for other source languages.\
 """,
     "cve_research_specialist": """\
 For CVE research, identify the exact product, component, and version from the supplied inventory or evidence. Use current primary sources when browsing is available: vendor security advisories first, then NVD, CVE records, and GitHub Security Advisories as corroboration. Record advisory links and affected/fixed version ranges. Compare the observed version exactly; check configuration, exposure, reachability, prerequisites, and whether the vulnerable code path is used. A matching version alone is only a candidate, never a confirmed finding. Do not run exploit code or active checks; return the likely vulnerability class so Mulderx can route any authorized validation to its dedicated hunter. If current sources are unavailable, report that limitation and do not guess.\

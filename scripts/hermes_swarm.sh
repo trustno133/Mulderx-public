@@ -188,7 +188,7 @@ if gate_or_stop hunters; then
   :
 else
   status=$?
-  [ "$status" -eq 10 ] && exit 0
+  [ "$status" -eq 10 ] && exit "$status"
   exit "$status"
 fi
 

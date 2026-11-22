@@ -62,6 +62,19 @@ especialista.
 6. Informá hitos, bloqueos, descartes y acciones manuales pendientes al
    operador.
 
+## Handoff de PoC y disposición
+
+Cada lead que llegue a un especialista debe volver con una PoC propuesta o
+pasos mínimos y no destructivos de reproducción, precondiciones, resultado
+esperado y estado de ejecución. Si no se ejecutó, conservar la etiqueta
+`NO EJECUTADA` y no presentarla como finding confirmado.
+
+Un bloqueo de scope, autorización, cuenta, datos, challenge o disponibilidad
+deja el lead como `CANDIDATO`/`SETUP-PENDIENTE` en `leads.md` y `BLOCKED` o
+`INSUFFICIENT` en `findings.json`, con su siguiente paso. `DISCARDED` requiere
+una prueba ejecutada y contraevidencia que refute la hipótesis; la falta de
+reproducción por sí sola no alcanza.
+
 ## Uso en Codex y Hermes
 
 En Codex, los `.codex/agents/*.toml` definen hunters por tipo de

@@ -18,6 +18,22 @@ Codex sin acceder a targets ni leer valores de secretos. Claude Code y Codex
 CLI se instalan/autentican por separado; Hermes se ejecuta desde WSL y su
 configuración efectiva está fuera de este repositorio.
 
+En Windows, los scripts activos y las herramientas de recon corren en Ubuntu
+WSL. Instala Go, `gcc`, Python 3 con `venv`, `curl` y `gzip` en WSL y, desde
+PowerShell en la raíz del repo, prepara las herramientas, dependencias Python,
+plantillas y listas pequeñas de fuzzing:
+
+```powershell
+$repoWsl = (wsl.exe -e wslpath -a (Get-Location).Path).Trim()
+wsl.exe -e bash -lc "cd '$repoWsl' && bash scripts/install_recon_tools_wsl.sh"
+```
+
+La instalación descarga herramientas y datos públicos, pero no envía requests
+a ningún target. Para ampliar fuentes pasivas, configura `GITHUB_TOKEN` y
+`CHAOS_KEY` dentro de WSL; sin esas claves, esas fuentes aportan menos datos.
+El doctor detecta las herramientas WSL, la lista de palabras y la configuración
+Python nativa; las claves nunca se imprimen.
+
 ## Cómo se organiza
 
 - `scripts/bb_pipeline.py`: recon activo por etapas, con confirmación humana,
@@ -42,9 +58,17 @@ configuración efectiva está fuera de este repositorio.
 Primero define el alcance en las reglas del programa. El scope sin wildcard es
 exacto. Para incluir subdominios, declara el wildcard autorizado explícitamente:
 
+En Windows, ejecuta el pipeline dentro de WSL para que use el mismo Python y
+las herramientas Linux instaladas:
+
 ```powershell
-python scripts/bb_pipeline.py -d example.com --scope "*.example.com" --yes
+$repoWsl = (wsl.exe -e wslpath -a (Get-Location).Path).Trim()
+wsl.exe -e bash -lc "cd '$repoWsl' && source ~/.local/share/mulderx/venvs/mulderx/bin/activate && python3 scripts/bb_pipeline.py -d 'example.com' --scope '*.example.com' --yes"
 ```
+
+Reemplaza `example.com` por el dominio autorizado y el `--scope` exacto del
+programa. En WSL/Linux, activa el mismo entorno virtual y ejecuta el comando
+`python3 scripts/bb_pipeline.py` desde la raíz del repositorio.
 
 `--scope example.com` cubre solo la raíz; `--scope "*.example.com"` cubre
 subdominios y excluye la raíz. `--yes` afirma que la autorización ya fue

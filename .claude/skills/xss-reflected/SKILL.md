@@ -19,6 +19,15 @@ Source: cualquier param de request (query, body, header, cookie) que la
 response devuelve sin persistir. Sink: se refleja en contexto peligroso —
 HTML body, atributo, bloque `<script>`, atributo de evento, URL.
 
+### Fuentes y salidas que suelen omitirse
+
+Además de los valores de campos obvios, considera segmentos de ruta, nombres de
+parámetros, headers/cookies, opciones de formato o render, y mensajes de error,
+redirecciones y fallbacks si la aplicación los expone. Una entrada inválida que
+aparece en una respuesta es solo una señal: confirma la ruta alcanzable, el tipo
+de contenido, el contexto del navegador y la ejecución. Un valor reflejado en JSON
+no demuestra XSS por sí solo; si el sink está en el cliente, enrútalo a `xss-dom`.
+
 **Source subestimado: error handlers que citan el input.**
 Mandar valores inválidos deliberadamente como parte del fuzzing normal —
 no solo valores plausibles. Muchos frameworks citan el valor ofensivo en

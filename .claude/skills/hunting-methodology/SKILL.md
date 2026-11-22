@@ -10,6 +10,8 @@ Usá esta skill como capa de decisión del hunt. No reemplaza `domain-recon`,
 especializadas: decide qué superficie y qué clase merece atención, y luego
 entrega el trabajo a la skill correspondiente.
 
+Para un target nuevo o una superficie amplia, usa también `multi-vuln-coverage`: mapea funcionalidades observadas a clases aplicables y evita que una sola señal de scanner domine. Luego usa esta metodología para priorizar y registrar cobertura.
+
 ## 0. Guardrails antes de elegir una ruta
 
 1. Confirmá scope, política, safe harbor, rate limits y credenciales
@@ -34,8 +36,10 @@ baseline confiable.
 2. Ejecutar el recon autorizado que corresponda mediante `domain-recon`.
 3. Pasar por summarizer y triage para producir señales y leads priorizados.
 4. Construir o actualizar el mapa navegable de superficie.
-5. Solo después elegir clases de vulnerabilidad y delegar en la skill
-   especializada.
+5. Cargar `multi-vuln-coverage` para convertir las funcionalidades observadas
+   en una matriz de clases aplicables. Priorizar por reachability, impacto, coste
+   y riesgo; después derivar los leads accionables a los especialistas. Un stack
+   o una señal de scanner orienta la hipótesis, pero no demuestra vulnerabilidad.
 
 Con autorizacion activa, discovery acotado de rutas y parametros forma
 parte de la ruta wide: despues del inventario pasivo, usar
@@ -97,6 +101,10 @@ Para estados de autenticación, compará solo los estados autorizados y
 disponibles: anónimo, usuario A, usuario B, rol privilegiado, sesión expirada
 o cross-tenant cuando corresponda. Compará status, longitud, cuerpo y efectos
 observables; un 200 aislado no prueba autorización rota.
+
+En un hunt amplio, revisar las clases aplicables que siguen sin cobertura y
+registrar si cada una fue probada, quedó pendiente, no aplica o se bloqueó. No
+considerar una clase agotada solo porque el scanner no encontró señales.
 
 ## 3. Timeboxing y rotación
 
@@ -169,4 +177,4 @@ exacto mediante `mulderx-rules`; no leas todo `pentest-agents/rules`.
 - Para la clase concreta, cargar solo la referencia correspondiente de
   `../vuln-classes/references/` y luego la skill canónica indicada por el
   router de Mulderx.
-- Para conocimiento hist?rico, consultar `hexbrain` solo cuando el prior art p?blico cambie una prueba concreta; verificarlo contra fuentes primarias y evidencia del target.
+- Para conocimiento histórico, consultar `hexbrain` solo cuando el prior art público cambie una prueba concreta; verificarlo contra fuentes primarias y evidencia del target.

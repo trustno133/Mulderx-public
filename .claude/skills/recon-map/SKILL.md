@@ -23,7 +23,7 @@ armá el mapa de, hacé un explorer de, algo tipo aquatone, mapa semántico de, 
 
 1. **Autorización de scope** — igual que `domain-recon`: los hosts deben caer bajo un wildcard/target ya autorizado (carpeta en `targets/<t>/` o confirmación explícita en la sesión). El fingerprint hace 1 GET por host.
 2. **NO es un scanner ruidoso** — `fingerprint.sh` hace un `GET /` con timeout de 7s por host, en paralelo. Si el target prohíbe incluso esto (ej. `assets.spotify.com` prohíbe scans automáticos), **sacar ese host de la lista** antes de correr. Bajar `-P` si el programa es sensible al volumen.
-3. **Datos reales, sin inventar** — todo campo sale del fingerprint o de DoH. Si un host no responde, queda `dead/internal`, no se adivina.
+3. **Datos reales, sin inventar** — todo campo sale del fingerprint, de DoH o de metadatos por host respaldados por evidencia registrada. Si un host no responde, queda `dead/internal`, no se adivina. Conservá la procedencia y no guardes secretos.
 
 ## Pipeline (4 pasos)
 
@@ -73,11 +73,22 @@ python3 .claude/skills/recon-map/assets/enrich.py \
   "targets/<t>/area_rules.tsv" "targets/<t>/leads.tsv"
 # o fuente PSV (fallback): pasar "$SB/fp.psv" en vez del .jsonl
 ```
+El archivo vecino `targets/<t>/map_metadata.json` se carga automáticamente;
+pasar otro path como quinto argumento solo si se quiere usar un overlay distinto.
 `enrich.py` **autodetecta el formato** (`.jsonl`/`{`=httpx, si no=PSV). Toma
 las tech+versiones de Wappalyzer y la IP del jsonl cuando están; completa
 CNAME/infra (DoH), ASN+org (Team Cymru vía DoH), versiones de headers,
 bucket de estado, y **versiona el dataset en `targets/<t>/hosts.json`** (vive
 en el repo, no solo en el artefacto).
+
+Para conservar señales verificadas que el fingerprint corto no representa,
+crear `targets/<t>/map_metadata.json`: objeto JSON indexado por hostname
+exacto, con `libraries` (array), `observations` (array) y
+`observations_source` (string con archivo/fecha/captura). Si el destino es
+`targets/<t>/hosts.json`, `enrich.py` carga automáticamente el archivo vecino;
+un quinto argumento puede señalar otro archivo. Las bibliotecas se agregan a
+las facetas y la ficha lateral muestra señales y procedencia. El archivo es
+específico del target y queda en `targets/<t>/`, nunca en las skills compartidas.
 
 ### Paso 4 — Ensamblar y publicar el artefacto
 
@@ -110,7 +121,8 @@ La consulta puntual es la respuesta directa a "salió CVE-XXXX en <tech>, ¿dón
 host, area, code (HTTP status), server, edge (CDN/WAF normalizado), framework,
 infra (de CNAME), cname, ip (primer A record), asn, asn_org (Team Cymru),
 version (array producto/x.y de headers), status (bucket), loc (redirect target),
-lead (LEAD-ID o ""), tags (array de tecnologías, incluye versiones)
+lead (LEAD-ID o ""), tags (array de tecnologías, incluye versiones),
+libraries (array), observations (array), observations_source (string)
 ```
 Buckets de `status`: `live`, `live·404`, `gated` (401/403), `redirect`, `dead/internal`, `dangling` (CNAME sin A → candidato takeover), `error` (5xx).
 

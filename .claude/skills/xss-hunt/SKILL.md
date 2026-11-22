@@ -7,6 +7,26 @@ description: Especialista de Mulderx para analizar y validar XSS reflected, stor
 
 Trabajá sobre el caso concreto que dio el operador. No abras `context.md`, `triage.md`, `surface_checklist.md`, leads ni `docs/workflow.md` por defecto. No cargues todo `.claude/skills/xss/` ni sus referencias.
 
+## Mapa de fuentes y salidas
+
+Para un lead amplio, anota solo las superficies que la aplicación realmente
+expone:
+
+- Request/server: query, body, formularios, JSON, segmentos de ruta, headers,
+  cookies, mensajes de error y redirecciones.
+- Browser/DOM: `location` y hash, `postMessage`, referrer, almacenamiento del
+  navegador, respuestas de API, estado de navegación y escrituras dinámicas al DOM.
+- Persistencia/segunda etapa: contenido y configuración guardados, Markdown/HTML,
+  archivos, vistas administrativas, notificaciones, logs y exportaciones.
+- JavaScript propio: sigue datos controlables por el usuario a través de sus
+  transformaciones hasta el sink y el contexto de ejecución. Una fuente o un sink
+  aislado son pistas, no confirmación.
+- Salidas alternativas: formatos, renderizadores, impresores, exportadores, errores
+  y fallbacks cuando haya evidencia de que esa ruta existe y es alcanzable.
+
+No enumeres todas las fuentes por rutina. Prioriza las que correspondan al flujo,
+respeta scope y prueba la ejecución en el origen objetivo.
+
 ## Método
 
 Use the `hexbrain` skill for relevant public prior art when it can change the test plan; verify any lead against primary sources and target evidence.

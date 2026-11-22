@@ -146,6 +146,9 @@
     selHost=host;
     var rows=[
       ['Área',d.area],['Estado',d.status+' ('+d.code+')'],['Server',d.server||'—'],
+      ['Bibliotecas cliente',(d.libraries||[]).join(', ')||'—'],
+      ['Señales observadas',(d.observations||[]).join('; ')||'—'],
+      ['Fuente de señales',d.observations_source||'—'],
       ['Edge',d.edge||'—'],['Framework',d.framework||'—'],
       ['Versión',(d.version&&d.version.length)?d.version.join(', '):'—'],
       ['IP',d.ip||'—'],['ASN',d.asn?(d.asn+' · '+(d.asn_org||'')):'—'],

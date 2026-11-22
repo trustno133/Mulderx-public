@@ -4,7 +4,7 @@ Agrega: resolución CNAME/A/IP (DoH), ASN + org (Team Cymru vía DoH), infra rea
 versiones (de headers), tags de tecnología, bucket de estado, y (opcional) área.
 
 Uso:
-  python3 enrich.py <fp.psv> <hosts.json> [area_rules.tsv] [leads.tsv]
+  python3 enrich.py <fp.psv> <hosts.json> [area_rules.tsv] [leads.tsv] [map_metadata.json]
 
 Campos por host: host, area, code, server, edge, framework, infra, cname,
   ip, asn, asn_org, version (lista), status, loc, lead, tags.
@@ -14,7 +14,7 @@ Notas de calibración (bugs reales ya corregidos, no re-introducir):
   - json.dump en una sola línea (sin newlines) → no rompe el <script> del embed.
   - print()/stderr solo ASCII (consola cp1252 de Windows crashea con → · ).
 """
-import sys, json, re, urllib.request, concurrent.futures
+import sys, json, re, os, urllib.request, concurrent.futures
 
 # ---------- reglas opcionales ----------
 def load_rules(path):
@@ -155,6 +155,35 @@ def read_httpx_jsonl(fp):
                          tech_ext=tech, ip_ext=ip or ''))
     return rows
 
+def read_host_metadata(path):
+    """Load evidence-backed per-host labels omitted by a shallow fingerprint."""
+    if not path:
+        return {}
+    with open(path, encoding='utf-8') as f:
+        raw = json.load(f)
+    if not isinstance(raw, dict):
+        raise ValueError("map_metadata.json must be an object keyed by exact host")
+    allowed = {'libraries', 'observations', 'observations_source'}
+    result = {}
+    for host, fields in raw.items():
+        if not isinstance(host, str) or not isinstance(fields, dict):
+            raise ValueError("each metadata entry must map a host string to an object")
+        clean = {}
+        for key in ('libraries', 'observations'):
+            value = fields.get(key, [])
+            if not isinstance(value, list) or not all(isinstance(x, str) for x in value):
+                raise ValueError(f"{host}.{key} must be an array of strings")
+            clean[key] = list(dict.fromkeys(x.strip() for x in value if x.strip()))
+        source = fields.get('observations_source', '')
+        if not isinstance(source, str):
+            raise ValueError(f"{host}.observations_source must be a string")
+        clean['observations_source'] = source.strip()
+        unknown = set(fields) - allowed
+        if unknown:
+            raise ValueError(f"unsupported metadata fields for {host}: {', '.join(sorted(unknown))}")
+        result[host] = clean
+    return result
+
 def main():
     fp, out = sys.argv[1], sys.argv[2]
     area_rules = load_rules(sys.argv[3]) if len(sys.argv) > 3 else []
@@ -166,6 +195,10 @@ def main():
                 if '\t' in ln: k, v = ln.split('\t', 1); lead_rules.append((k, v))
         except FileNotFoundError:
             pass
+    metadata_path = sys.argv[5] if len(sys.argv) > 5 else os.path.join(os.path.dirname(out), 'map_metadata.json')
+    if len(sys.argv) <= 5 and not os.path.isfile(metadata_path):
+        metadata_path = None
+    host_metadata = read_host_metadata(metadata_path)
 
     # detección de formato: .jsonl (httpx) o .psv (fingerprint.sh)
     head = open(fp, encoding='utf-8', errors='replace').read(1)
@@ -206,11 +239,17 @@ def main():
         for t in [edge, (r['server'].split('/')[0] if r['server'] and r['server'].split('/')[0].lower() != edge.lower() else ''),
                   fw, (inf if inf and inf != edge else '')] + ver + tech_ext:
             if t and t not in tags: tags.append(t)
+        metadata = host_metadata.get(h, {})
+        libraries = metadata.get('libraries', [])
+        for library in libraries:
+            if library not in tags: tags.append(library)
         lead = next((v for k, v in lead_rules if k in h), '')
         out_rows.append(dict(host=h, area=area_of(h), code=r['code'], server=r['server'],
             edge=edge, framework=fw, infra=inf, cname=cn, ip=ip, asn=asn, asn_org=org,
             version=ver, status=status_bucket(r['code'], cn, ip, ast), loc=r['loc'],
-            lead=lead, tags=tags))
+            lead=lead, tags=tags, libraries=libraries,
+            observations=metadata.get('observations', []),
+            observations_source=metadata.get('observations_source', '')))
 
     out_rows.sort(key=lambda x: (x['area'], x['host']))
     with open(out, 'w', newline='', encoding='utf-8') as f:

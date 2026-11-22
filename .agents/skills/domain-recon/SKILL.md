@@ -17,6 +17,24 @@ analizá este dominio, reconocé este dominio a fondo, corré el pipeline sobre,
 
 ## Instructions for Claude
 
+### Ejecución en Windows con WSL
+
+Las herramientas de recon de Mulderx y el entorno Python completo se instalan
+en Ubuntu/WSL. Si el agente está usando PowerShell, ejecutá los scripts Bash
+desde la raíz del repositorio con WSL y su ruta Linux; no asumas que `bash` ni
+las herramientas Go están en el PATH de Windows:
+
+```powershell
+$repoWsl = (wsl.exe -e wslpath -a (Get-Location).Path).Trim()
+wsl.exe -e bash -lc "cd '$repoWsl' && source ~/.local/share/mulderx/venvs/mulderx/bin/activate && bash scripts/reconv2.5.sh 'dominio-autorizado.tld' --yes"
+```
+
+Para el pipeline profundo, usá el mismo `cd` y entorno virtual, y reemplazá el
+comando por `python3 scripts/bb_pipeline.py` con el scope exacto confirmado.
+`--yes` registra una autorización ya dada; nunca la sustituye. No ejecutes
+estos comandos de ejemplo contra un dominio real sin confirmar autorización y
+scope.
+
 ### Paso 0 — Gate de autorización (no negociable, va antes que cualquier otra cosa)
 
 `bb_pipeline.py` ejecuta herramientas de descubrimiento activo contra infraestructura real (subfinder, assetfinder, crt.sh, resolución DNS masiva, httpx contra cada host vivo, y luego fetches HTTP completos vía `recon_fingerprint`). Esto no es pasivo ni de bajo impacto — antes de correrlo:

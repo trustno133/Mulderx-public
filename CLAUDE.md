@@ -14,6 +14,8 @@ Para hunts o validación XSS, delegar en el subagente `xss-specialist` de `.clau
 
 El flujo detallado de bug bounty y las reglas operativas extensas están en `docs/workflow.md`. Consultar solo las secciones pertinentes para la tarea actual; no cargar el documento completo por defecto.
 
+Para un dominio o una superficie amplia, cargar `multi-vuln-coverage` para mapear las funcionalidades observadas a clases de vulnerabilidad y planear cobertura equilibrada. Derivar las señales concretas a los especialistas correspondientes y cargar playbooks bajo demanda.
+
 Para seleccionar una ruta wide/deep, priorizar superficie, aplicar sibling
 rule, timeboxing y registrar cobertura, cargar `hunting-methodology`. Para
 clasificar una señal entre clases de vulnerabilidad, cargar `vuln-classes` y

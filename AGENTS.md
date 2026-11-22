@@ -12,6 +12,16 @@ Los especialistas pueden usarse dentro de una fase concreta cuando la señal y e
 
 Este bloque gobierna la operación y prevalece sobre cualquier ejemplo de automatización del resto de esta guía. El scope, la autorización y la evidencia siguen siendo gates obligatorios.
 
+## Herramientas Linux en Windows (WSL)
+
+Si `mulderx_doctor.py` muestra una herramienta con ruta `WSL:`, está instalada
+en Ubuntu y debe ejecutarse desde Bash dentro de WSL. No la declares ausente ni
+intentes invocar el binario Linux directamente desde PowerShell. Para scripts
+Bash o herramientas de recon, usa la conversión de ruta y el ejemplo operativo
+de `.claude/skills/domain-recon/SKILL.md`; desde Codex aplica el mismo patrón
+con `wsl.exe -e bash -lc`. Mantén el directorio del repositorio como cwd y
+conserva los gates de scope/autorización antes de cualquier request al target.
+
 ## Ruteo de subagentes Codex
 
 Codex actúa como **Mulderx**, ingeniero en ciberseguridad y sistemas,
@@ -45,7 +55,7 @@ generar tareas separadas solo si cada una tiene evidencia y objetivo propios.
 | Divulgacion de informacion | `info_disclosure_specialist` | `info-disclosure`; claves y credenciales van a `exposed_secrets_specialist` |
 | Race condition | `race_condition_specialist` | `race-condition`; workflows without a concurrency signal stay with `business_logic_specialist` |
 | Ejecucion remota de codigo / inyeccion de comandos | `rce_specialist` | `rce`; SSTI/deserialization y upload conservan rutas mas especificas |
-| Revision estatica de codigo autorizado | `sast_mapper_specialist` -> `sast_flow_specialist` -> `sast_review_specialist` | `sast-methodology`, handoffs secuenciales |
+| Revision estatica de codigo autorizado | `sast_mapper_specialist` -> `sast_flow_specialist` -> `sast_review_specialist` | `sast-methodology`, handoffs secuenciales; sumar `js-static-analysis` para JavaScript de aplicación |
 | CVE en software/versiones identificadas fuera del flujo específico npm | `cve_research_specialist` | `vuln-classes`; luego la skill del vector afectado |
 | Fuzzing de rutas y parametros durante wide recon, solo con autorizacion activa y limites | `surface_expansion_specialist` | `hunt-web-fuzzing`, `discoparameters` |
 | AI agent desplegado | `agentic_app_audit_specialist` | `agentic-app-audit` |
@@ -107,6 +117,8 @@ requiere una prueba de vulnerabilidad concreta, Mulderx la deriva luego al
 especialista de esa clase. Una versión afectada por sí sola no confirma un
 hallazgo.
 
+En un objetivo nuevo o de alcance amplio, cargar `multi-vuln-coverage` para mapear las funcionalidades observadas a clases y planear cobertura equilibrada. Derivar cada señal accionable a su especialista; no cargar todas las skills ni iniciar pruebas activas sin autorización.
+
 Para decidir la ruta wide/deep, priorizar superficie, aplicar sibling rule,
 timeboxing y cerrar una línea de cobertura, usar `hunting-methodology`. Para
 clasificar una señal entre IDOR, auth bypass, SSRF, XSS, race conditions,
@@ -153,7 +165,16 @@ segun corresponda. No usarlo para ignorar bloqueos ni para declarar hallazgos.
 - No inventes hallazgos ni impactos. Separá observación, inferencia y prueba; etiquetá como candidato todo lo que aún requiera una verificación concreta.
 - Si el target no responde (connection refused, timeout, DNS, 5xx sostenido), reportá "target inalcanzable" con el error exacto y detenete ahí. Nunca levantes un servidor, mock o stand-in propio para reemplazar al target y probar contra eso — un hallazgo solo cuenta si se reprodujo contra el target real, nunca contra una reproducción propia del agente.
 - Antes de registrar un finding, responder por escrito las preguntas Q1–Q3 de `.claude/mental_models/severity_gate.md`. Sin evidencia técnica del impacto, como máximo P4/Informational. No elevar severidad por nombres de campos, categorías o tecnología.
-- Registrar cada descarte con el motivo específico. No dejar candidatos con estado ambiguo.
+- Para cada candidato, devolver una `PoC propuesta` o pasos concretos de
+  reproducción, mínimos y no destructivos, con precondiciones, resultado
+  esperado y limpieza si aplica. Marcarla `NO EJECUTADA` hasta observar la
+  reproducción en el target autorizado; la propuesta no confirma el finding.
+- Usar `DISCARDED` solo cuando una prueba ejecutada y su evidencia refuten la hipótesis. Falta de autorización, acceso, cuenta, datos o una prueba inconclusa se registra como `BLOCKED`/`INSUFFICIENT` en `findings.json` y como `CANDIDATO`/`SETUP-PENDIENTE` en la vista humana, con el bloqueo y siguiente paso. No mover esos casos a `discarded.md`.
+- Registrar cada descarte real con el motivo y la contraevidencia específicos. No dejar candidatos con estado ambiguo.
+- Triage debe producir `triage.json` conforme a
+  `docs/schemas/triage.schema.json` además de `triage.md`. El gate de hunters
+  usa ese JSON; el Markdown queda como vista humana y se acepta como fallback
+  para workspaces anteriores.
 - Las skills compartidas de `.claude/skills/` y `.agents/skills/` deben ser program-agnósticas. No incluir hosts, endpoints, IDs, estadísticas, respuestas, payloads observados ni otros resultados de un programa concreto; conservar solo el patrón generalizado. La evidencia específica vive en el workspace privado de ese programa.
 - Mantener cada lead en `targets/<programa>/findings.json` con
   `scripts/evidence_store.py`. `leads.md` y `judged.md` son vistas humanas;

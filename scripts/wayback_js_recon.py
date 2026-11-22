@@ -120,29 +120,27 @@ class Snapshot:
 # ─── CDX helpers ─────────────────────────────────────────────────────────────
 
 def _cdx_get(params: Dict, rate: float) -> List[List[str]]:
-    """Single CDX API call with one retry. Returns list-of-rows (no header row)."""
+    """Make one CDX request; stop the run on rate limits or other failures."""
     time.sleep(rate)
-    for attempt in range(2):
-        try:
-            r = requests.get(
-                CDX_API, params=params, timeout=60,
-                headers={"User-Agent": f"wayback_js_recon/{VERSION}"},
-                allow_redirects=False,
-            )
-            if r.status_code == 200:
-                data = r.json()
-                return data[1:] if len(data) > 1 else []
-            else:
-                _warn(f"CDX returned HTTP {r.status_code} (attempt {attempt + 1}/2)")
-                if attempt == 0:
-                    time.sleep(max(rate, 3))
-                    continue
-        except Exception as exc:
-            if attempt == 0:
-                time.sleep(max(rate, 2))
-                continue
-            _err(f"CDX request failed: {exc}")
-    return []
+    try:
+        r = requests.get(
+            CDX_API, params=params, timeout=60,
+            headers={"User-Agent": f"wayback_js_recon/{VERSION}"},
+            allow_redirects=False,
+        )
+        if r.status_code == 429:
+            _err("CDX returned HTTP 429; stopping immediately without retry")
+            sys.exit(75)
+        if r.status_code != 200:
+            _err(f"CDX returned HTTP {r.status_code}; stopping without retry")
+            sys.exit(75)
+        data = r.json()
+        return data[1:] if len(data) > 1 else []
+    except SystemExit:
+        raise
+    except Exception as exc:
+        _err(f"CDX request failed; stopping without retry: {exc}")
+        sys.exit(75)
 
 
 def fetch_js_urls(domain: str, scope: str, since: Optional[str], limit: int, rate: float) -> List[JSFile]:
@@ -297,6 +295,9 @@ def download_snapshot(original_url: str, timestamp: str, dest: Path, rate: float
             wb_url, timeout=30, headers={"User-Agent": f"wayback_js_recon/{VERSION}"},
             stream=True,
         ) as response:
+            if response.status_code == 429:
+                _err("Wayback snapshot returned HTTP 429; stopping immediately")
+                sys.exit(75)
             if response.status_code != 200:
                 return False
             body = bytearray()
@@ -327,6 +328,9 @@ def download_live(url: str, dest: Path, rate: float, scope: str) -> bool:
             url, timeout=30, headers={"User-Agent": f"wayback_js_recon/{VERSION}"},
             stream=True,
         ) as response:
+            if response.status_code == 429:
+                _err("Live JS request returned HTTP 429; stopping immediately")
+                sys.exit(75)
             if response.status_code != 200:
                 return False
             body = bytearray()
